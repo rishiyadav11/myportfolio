@@ -19,7 +19,7 @@ const Projects = () => {
      <section key={index} className=" dark:bg-gray-900 border  bg-sky-200 bg-[url('https://img.freepik.com/premium-vector/abstract-3d-art-background-holographic-floating-liquid-blobs-soap-bubbles-metaballs_1142-8589.jpg')] bg-no-repeat bg-cover w-[80%]  rounded-md">
      <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
      <img  className="w-[95%] dark:hidden h-80 object-contain" src={elem.imgsrc} alt="dashboard image" />
-    <div className="mt-4 md:mt-0">
+    <div className="mt-4 md:mt-0 sm:ml-20">
         <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">{elem.name}</h2>
         <p className="mb-6 font-medium text-white md:text-lg dark:text-gray-400">{elem.description}</p>
         <a href={elem.href} className="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
