@@ -1,6 +1,7 @@
 import React from 'react'
 import Skills from './Skills';
 
+
 const About = () => {
   return (
     <div className='pt-20 px-6 sm:pl-28 '>

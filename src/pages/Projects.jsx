@@ -4,10 +4,21 @@ import React from "react";
 import { useState } from "react";
 import textemoji from "../projectImages/txtmojipic.png";
 import zelt from "../projectImages/zelt.png";
-
+import applepic from "../projectImages/applepic.png";
+import mirandapic from "../projectImages/mirandapic.png";
+import newgenpic from "../projectImages/newgenpic.png";
+import refokusspic from "../projectImages/refokusspic.png"; 
 
 const Projects = () => {
   const [data, setdata] = useState([
+    
+    {
+      name: "Zelt app 💻",
+      href: "https://zelt-app.vercel.app/",
+      imgsrc: zelt ,
+      description:
+        " Zelt is a minimalist task management app designed to streamline your workflow. With its clean interface and intuitive features, Zelt helps you prioritize tasks and stay organized effortlessly. Say goodbye to clutter and hello to productivity with Zelt.",
+    },
     {
       name: "TextTomoji 💻",
       href: "https://texttomoji-1.vercel.app/",
@@ -16,11 +27,32 @@ const Projects = () => {
         "TextToMoji is a delightful web app that transforms your text into vibrant emoji art! Express yourself in a fun and creative way by converting plain text into colorful emoji compositions. With a simple and intuitive interface, TextToMoji offers endless possibilities for adding a touch of whimsy to your messages, social media posts, and more. Try it now and unleash your inner emoji artist!",
     },
     {
-      name: "Zelt app 💻",
-      href: "https://zelt-app.vercel.app/",
-      imgsrc: zelt ,
+      name: "Apple web clone 📱",
+      href: "https://apple-iphone-web.vercel.app/",
+      imgsrc: applepic ,
       description:
-        " Zelt is a minimalist task management app designed to streamline your workflow. With its clean interface and intuitive features, Zelt helps you prioritize tasks and stay organized effortlessly. Say goodbye to clutter and hello to productivity with Zelt.",
+        "Apple Web Clone, a sleek React.js application replicating Apple's iconic website design. Experience smooth animations and intuitive navigation, capturing the elegance and innovation of Apple's online presence. Enhanced with Three.js, enjoy immersive 3D graphics for a truly captivating user experience.",
+    },
+    {
+      name: "Miranda Paper  📜",
+      href: "https://miranda-paperstyle-website.vercel.app/",
+      imgsrc: mirandapic ,
+      description:
+        "Miranda Paper Portfolio is a website that combines a vintage aesthetic with modern animation. It showcases timeless designs on old-style paper, creating a nostalgic vibe. Experience the charm of the past brought to life through interactive elements.",
+    },
+    {
+      name: "New gen web  🎮",
+      href: "https://newgenwebdesgin.vercel.app/",
+      imgsrc: newgenpic,
+      description:
+        "New Gen Web is a cutting-edge website that features next-generation effects and animations. It offers a dynamic and immersive user experience with state-of-the-art visual interactions. Explore the future of web  with animations and sleek aesthetics.",
+    },
+    {
+      name: "Refokuss  👨‍💻",
+      href: "https://refokuss.vercel.app/",
+      imgsrc: refokusspic,
+      description:
+        "Refokuss is a modern React app enhanced with Framer Motion animations. It delivers a sleek, dynamic user experience through smooth, interactive visual effects. Discover the synergy of advanced web technologies and refined motion design.",
     },
   ]);
   return (
@@ -38,7 +70,7 @@ const Projects = () => {
         >
           <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
             <img
-              className="w-[98%] dark:hidden border border-black-500 rounded-lg  h-80 object-cover"
+              className="w-[98%] object-contain dark:hidden border border-black-500 rounded-lg  h-80 sm:object-cover"
               src={elem.imgsrc}
               alt="dashboard image"
             />

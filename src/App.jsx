@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast'
 import About from './pages/About'
 import Portfolio from './pages/Portfolio'
 import Game from './pages/Game'
+import Aboutsec from './pages/Aboutsec'
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
         <Route path='/' element={<Home/>}/>
         <Route path='/projects' element={<Projects/>}/>
         <Route path='/Contact' element={<Contact/>}/>
-        <Route path='/About' element={<About/>}/>
+        <Route path='/Aboutsec' element={<Aboutsec/>}/>
         <Route path='/portfolio' element={<Portfolio/>}/>
         <Route path='/Game' element={<Game/>}/>
       </Routes>
