@@ -27,14 +27,14 @@ const Myprojects = () => {
     {
       name: "Rayben future.. 💻",
       href: "https://rishiyadav11.github.io/rayben-clone-website/",
-      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/rayben.png?raw=true",
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/rayban.png?raw=true",
       description:
         "I designed a Ray-Ban homepage featuring advanced functionalities, enhancing user engagement and showcasing the brand's stylish eyewear collection.",
     },
     {
       name: "Miranda Paper  📜",
       href: "https://miranda-paperstyle-website.vercel.app/",
-      imgsrc: "ghttps://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/mirandapic.pn?raw=true" ,
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/mirandapic.pn?raw=true" ,
       description:
         "Miranda Paper Portfolio is a website that combines a vintage aesthetic with modern animation. It showcases timeless designs on old-style paper, creating a nostalgic vibe. Experience the charm of the past brought to life through interactive elements.",
     },
