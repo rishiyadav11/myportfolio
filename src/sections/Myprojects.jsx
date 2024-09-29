@@ -11,7 +11,7 @@ const Myprojects = () => {
     {
       name: "Zelt app 💻",
       href: "https://zelt-app.vercel.app/",
-      imgsrc: "/public/assets/projectpics/zelt.png" ,
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/zelt.png?raw=true" ,
       description:
         " Zelt is a minimalist task management app designed to streamline your workflow. With its clean interface and intuitive features, Zelt helps you prioritize tasks and stay organized effortlessly. Say goodbye to clutter and hello to productivity with Zelt.",
     },
@@ -19,7 +19,7 @@ const Myprojects = () => {
     {
       name: "Apple web clone 📱",
       href: "https://apple-iphone-web.vercel.app/",
-      imgsrc: "/public/assets/projectpics/applepic.png" ,
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/applepic.png?raw=true" ,
       description:
         "Apple Web Clone, a sleek React.js application replicating Apple's iconic website design. Experience smooth animations and intuitive navigation, capturing the elegance and innovation of Apple's online presence. Enhanced with Three.js, enjoy immersive 3D graphics for a truly captivating user experience.",
     },
@@ -27,56 +27,56 @@ const Myprojects = () => {
     {
       name: "Rayben future.. 💻",
       href: "https://rishiyadav11.github.io/rayben-clone-website/",
-      imgsrc: "/public/assets/projectpics/rayban.png",
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/rayben.png?raw=true",
       description:
         "I designed a Ray-Ban homepage featuring advanced functionalities, enhancing user engagement and showcasing the brand's stylish eyewear collection.",
     },
     {
       name: "Miranda Paper  📜",
       href: "https://miranda-paperstyle-website.vercel.app/",
-      imgsrc: "public/assets/projectpics/mirandapic.png" ,
+      imgsrc: "ghttps://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/mirandapic.pn?raw=true" ,
       description:
         "Miranda Paper Portfolio is a website that combines a vintage aesthetic with modern animation. It showcases timeless designs on old-style paper, creating a nostalgic vibe. Experience the charm of the past brought to life through interactive elements.",
     },
     {
       name: "Khatabook 💻",
       href: "https://khatabook-teal.vercel.app/",
-      imgsrc: "/public/assets/projectpics/khatabook.png",
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/khatabook.png?raw=true",
       description:
         "My project is a fullstack clone of the Khatabook website with new features, improving usability and adding unique tools for managing personal and business finances efficiently.",
     },
     {
       name: "Mapday 💻",
       href: "https://map-day.vercel.app/",
-      imgsrc: "/public/assets/projectpics/mapday.png",
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/mapday.png?raw=true",
       description:
         "I created 'Mapday,' a platform to manage and track your content, helping you organize what you want to watch and maintain a record of what you've already watched.",
     },
     {
       name: "TextTomoji 💻",
       href: "https://texttomoji-1.vercel.app/",
-      imgsrc: "/public/assets/projectpics/txtmojipic.png",
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/txtmojipic.png?raw=true",
       description:
         "TextToMoji is a delightful web app that transforms your text into vibrant emoji art! Express yourself in a fun and creative way by converting plain text into colorful emoji compositions. With a simple and intuitive interface, TextToMoji offers endless possibilities for adding a touch of whimsy to your messages, social media posts, and more. Try it now and unleash your inner emoji artist!",
     },
     {
       name: "Dukaan ui 💻",
       href: "https://dukaan-ui-seven.vercel.app/",
-      imgsrc: "/public/assets/projectpics/dukaanui.png",
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/dukaanui.png?raw=true",
       description:
         "I cloned a Dukaan UI, replicating its design and functionality to create an intuitive online store interface for seamless user interaction.",
     },
     {
       name: "New gen web  🎮",
       href: "https://newgenwebdesgin.vercel.app/",
-      imgsrc: "public/assets/projectpics/newgenpic.png",
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/newgenpic.png?raw=true",
       description:
         "New Gen Web is a cutting-edge website that features next-generation effects and animations. It offers a dynamic and immersive user experience with state-of-the-art visual interactions. Explore the future of web  with animations and sleek aesthetics.",
     },
     {
       name: "Refokuss  👨‍💻",
       href: "https://refokuss.vercel.app/",
-      imgsrc: "public/assets/projectpics/refokusspic.png",
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/refokusspic.png?raw=true",
       description:
         "Refokuss is a modern React app enhanced with Framer Motion animations. It delivers a sleek, dynamic user experience through smooth, interactive visual effects. Discover the synergy of advanced web technologies and refined motion design.",
     },
