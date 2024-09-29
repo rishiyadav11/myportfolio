@@ -1,30 +1,43 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import Projects from './pages/Projects'
-import Contact from './pages/Contact'
-import { Toaster } from 'react-hot-toast'
-import About from './pages/About'
-import Portfolio from './pages/Portfolio'
-import Game from './pages/Game'
-import Aboutsec from './pages/Aboutsec'
+import React, { useEffect, useRef } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './sections/Navbar';
+import Hero from './sections/Hero';
+import About from './sections/About';
+import Projects from './sections/Projects';
+import Contact from './sections/Contact';
+import Footer from './sections/Footer';
+import Myprojects from './sections/Myprojects';
 
 const App = () => {
+  const scrollRef = useRef(null);
+  
+
   return (
-    <div>
-      <Toaster/>
-      <Navbar/>
+    <div className="">
+      {/* Always show the Navbar */}
+      <Navbar />
+      
+      {/* Routes to switch between different pages */}
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/projects' element={<Projects/>}/>
-        <Route path='/Contact' element={<Contact/>}/>
-        <Route path='/Aboutsec' element={<Aboutsec/>}/>
-        <Route path='/portfolio' element={<Portfolio/>}/>
-        <Route path='/Game' element={<Game/>}/>
+        {/* Default route to show main sections */}
+        <Route path="/" element={
+          <main className="max-w-7xl mx-auto">
+            <Hero />
+            <About />
+            <Projects />
+            <Contact />
+            <Footer />
+          </main>
+        } />
+
+        {/* Route to render Myprojects component */}
+        <Route path="/myprojects" element={<Myprojects />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        
       </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
