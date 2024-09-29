@@ -28,7 +28,7 @@ const Navbar = () => {
                 <a href="/" className='text-neutral-400 hidden sm:flex font-bold text-xl hover:text-white transition-colors'>Rishi yadav</a>
                 <img className='w-8 h-8 object-cover rounded-md flex sm:hidden' src="/assets/logo.png" alt="" />
                 <button onClick={toogleMenu} className='text-neutral-400 hover:text-white focus:outline-none sm:hidden flex' aria-label='Toggle menu'>
-                    <img src={isOpen ?"/public/assets/close.svg" :"/public/assets/menu.svg"} alt="toggle " className='w-6 h-6' />
+                    <img src={isOpen ?"https://raw.githubusercontent.com/rishiyadav11/myportfolio/24b1bc8c032ecf3e0551de12c5681dd05462c899/public/assets/close.svg" :"https://raw.githubusercontent.com/rishiyadav11/myportfolio/24b1bc8c032ecf3e0551de12c5681dd05462c899/public/assets/menu.svg"} alt="toggle " className='w-6 h-6' />
                 </button>
                 <nav className='sm:flex hidden'>
                     <NavItems/>
