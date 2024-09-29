@@ -34,7 +34,7 @@ const Myprojects = () => {
     {
       name: "Miranda Paper  📜",
       href: "https://miranda-paperstyle-website.vercel.app/",
-      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/mirandapic.pn?raw=true" ,
+      imgsrc: "https://github.com/rishiyadav11/myportfolio/blob/main/public/assets/projectpics/mirandapic.png?raw=true" ,
       description:
         "Miranda Paper Portfolio is a website that combines a vintage aesthetic with modern animation. It showcases timeless designs on old-style paper, creating a nostalgic vibe. Experience the charm of the past brought to life through interactive elements.",
     },
