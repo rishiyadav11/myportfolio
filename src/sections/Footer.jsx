@@ -13,12 +13,12 @@ const Footer = () => {
             <img src="/assets/github.svg" alt="github" className="w-1/2 h-1/2" />
             </a></div>
           <div >
-            <a className="social-icon" target="_blank" href="https://www.linkedin.com/in/rishi-yadav-809096279/">
+            <a className="social-icon" target="_blank" href="https://x.com/RishiYadav5911">
             <img src="/assets/twitter.svg" alt="twitter" className="w-1/2 h-1/2" />
             </a>
           </div>
           <div >
-            <a  className="social-icon" target="_blank" href="https://x.com/RishiYadav5911">
+            <a  className="social-icon" target="_blank"  href="https://www.linkedin.com/in/rishi-yadav-809096279/" >
             <img src="https://imgs.search.brave.com/SQsaFNKXL9x2pacICOrPpnY5c1-Eee1Vf0jOmntInaM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9j/L2NhL0xpbmtlZElu/X2xvZ29faW5pdGlh/bHMucG5n" alt="linkdin" className="w-1/2 h-1/2" />
             </a>
           </div>
