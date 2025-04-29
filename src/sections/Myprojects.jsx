@@ -7,6 +7,24 @@ import { useState } from "react";
 
 const Myprojects = () => {
   const [data, setdata] = useState([
+
+
+    {
+      name: "Baemark 💖",
+      href: "https://www.baemark.com/",
+      imgsrc: "assets/projectpics/baemark.png" ,
+      description:
+        "Baemark is a stylish and user-friendly e-commerce platform focused on curated fashion items. It features personalized shopping based on gender and size, a clean feminine-themed UI, and seamless category filtering.",
+    },
+
+
+    {
+      name: "neuronotes 📳",
+      href: "https://neuronote-blog.vercel.app/",
+      imgsrc: "assets/projectpics/neuronote.png" ,
+      description:
+        "Neuronote is a platform that allows users to write, share, and discover insightful articles and notes. It offers a clean, intuitive interface for both writers and readers to engage with thought-provoking content.",
+    },
     
     {
       name: "Zelt app 💻",
@@ -84,7 +102,7 @@ const Myprojects = () => {
   return (
     <div className="flex flex-col items-center gap-5 pt-10">
       <div className="heading">
-        <h1 className="font-black text-white-500 cursor-pointer hover:text-white     lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] mt-20 sm:mt-10">
+        <h1 className="font-black text-white-500 cursor-pointer hover:text-white duration-700    lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] mt-20 sm:mt-10">
           Project Section
         </h1>
       </div>
@@ -92,7 +110,7 @@ const Myprojects = () => {
       {data.map((elem, index) => (
         <section
           key={index}
-          className={`dark:bg-gray-900 border bg-[url("/public/assets/spotlight1.png")]  bg-cover w-[80%]  rounded-md`}
+          className={`dark:bg-gray-900 border bg-[url("/assets/spotlight1.png")]  bg-cover w-[80%]  rounded-md`}
         >
           <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
             <img

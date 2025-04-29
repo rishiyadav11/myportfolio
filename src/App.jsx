@@ -3,10 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './sections/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
-import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 import Myprojects from './sections/Myprojects';
+import Resume from './sections/Resume';
 
 const App = () => {
   const scrollRef = useRef(null);
@@ -24,7 +24,6 @@ const App = () => {
           <main className="max-w-7xl mx-auto">
             <Hero />
             <About />
-            <Projects />
             <Contact />
             <Footer />
           </main>
@@ -34,6 +33,7 @@ const App = () => {
         <Route path="/myprojects" element={<Myprojects />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/resume" element={<Resume/>}/>
         
       </Routes>
     </div>
