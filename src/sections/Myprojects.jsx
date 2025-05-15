@@ -16,6 +16,13 @@ const Myprojects = () => {
       description:
         "Baemark is a stylish and user-friendly e-commerce platform focused on curated fashion items. It features personalized shopping based on gender and size, a clean feminine-themed UI, and seamless category filtering.",
     },
+    {
+      name: "Chattrix 📳",
+      href: "https://chattrix.tech/",
+      imgsrc: "assets/projectpics/chattrix.png" ,
+      description:
+        "A real-time chat web app enabling seamless one-on-one and group messaging. Built with React, Node.js, and Socket.IO, it supports live typing indicators, secure login, and responsive UI for cross-device compatibility.",
+    },
 
 
     {
