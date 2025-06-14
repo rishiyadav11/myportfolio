@@ -10,11 +10,26 @@ const Myprojects = () => {
 
 
     {
+      name: "RB Health club 🏥",
+      href: "https://www.rbhealthclub.com/",
+      imgsrc: "assets/projectpics/rb.png" ,
+      description:
+        "RB Health Club is a modern fitness platform offering personalized workout plans, nutrition tracking, and a supportive community. Achieve your fitness goals with expert guidance and motivation.",
+    },
+    {
       name: "Baemark 💖",
       href: "https://www.baemark.com/",
       imgsrc: "assets/projectpics/baemark.png" ,
       description:
         "Baemark is a stylish and user-friendly e-commerce platform focused on curated fashion items. It features personalized shopping based on gender and size, a clean feminine-themed UI, and seamless category filtering.",
+    },
+    
+    {
+      name: "Happy Laptops and computers 💻",
+      href: "https://www.happylaptops.in/",
+      imgsrc: "assets/projectpics/happy.png" ,
+      description:
+        "Happy Laptops and Computers is your one-stop destination for all things tech. We offer a wide range of laptops, desktops, and accessories, ensuring you find the perfect device to suit your needs.",
     },
     {
       name: "Chattrix 📳",

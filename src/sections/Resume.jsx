@@ -22,7 +22,7 @@ const Resume = () => {
         Download my resume to explore my journey, skills, and how I can bring value to your team.
       </p>
       <a
-        href="/assets/rishi'scv.pdf"
+        href="/assets/rishi's_resume.pdf"
         download
         style={{
           backgroundColor: '#1DB954',
