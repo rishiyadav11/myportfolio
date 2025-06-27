@@ -7,7 +7,19 @@ import { useState } from "react";
 
 const Myprojects = () => {
   const [data, setdata] = useState([
-
+{
+  name: "Dash – Your AI Teammate 🤖",
+  href: "https://usedash.vercel.app/",
+  imgsrc: "assets/projectpics/dash.png", // Make sure this image exists in your assets
+  description:
+    "Dash is an AI-powered personal agent that connects to Gmail, Slack, Calendar, and more to automate your workflows. Backed by Y Combinator (S25), Dash helps you focus on real work while it handles the rest.",
+},{
+  name: "YouShift – Smart Shift Scheduling ⚡",
+  href: "https://youshift.vercel.app/", // Replace with actual URL if different
+  imgsrc: "assets/projectpics/youshift.png", // Ensure this image exists in your assets
+  description:
+    "YouShift is an AI-powered workforce scheduling platform that streamlines shift planning for teams. Empower your employees with flexibility, increase productivity, and simplify operations — all in one place.",
+},
 
     {
       name: "RB Health club 🏥",
@@ -23,7 +35,14 @@ const Myprojects = () => {
       description:
         "Baemark is a stylish and user-friendly e-commerce platform focused on curated fashion items. It features personalized shopping based on gender and size, a clean feminine-themed UI, and seamless category filtering.",
     },
-    
+    {
+  name: "Pariksha Career Institute 🎓",
+  href: "https://www.parikshacareerinstitute.in/",
+  imgsrc: "assets/projectpics/pariksha.png", // Ensure this image exists in your assets
+  description:
+    "Pariksha Career Institute is a premier coaching center guiding students towards success in NEET, JEE, Olympiads, NTSE, and foundational classes. With expert faculty and personalized mentorship, it’s where serious preparation meets smart strategy.",
+},
+
     {
       name: "Happy Laptops and computers 💻",
       href: "https://www.happylaptops.in/",
