@@ -7,13 +7,14 @@ import { useState } from "react";
 
 const Myprojects = () => {
   const [data, setdata] = useState([
+// {
+//   name: "Dash – Your AI Teammate 🤖",
+//   href: "https://usedash.vercel.app/",
+//   imgsrc: "assets/projectpics/dash.png", // Make sure this image exists in your assets
+//   description:
+//     "Dash is an AI-powered personal agent that connects to Gmail, Slack, Calendar, and more to automate your workflows. Backed by Y Combinator (S25), Dash helps you focus on real work while it handles the rest.",
+// },
 {
-  name: "Dash – Your AI Teammate 🤖",
-  href: "https://usedash.vercel.app/",
-  imgsrc: "assets/projectpics/dash.png", // Make sure this image exists in your assets
-  description:
-    "Dash is an AI-powered personal agent that connects to Gmail, Slack, Calendar, and more to automate your workflows. Backed by Y Combinator (S25), Dash helps you focus on real work while it handles the rest.",
-},{
   name: "YouShift – Smart Shift Scheduling ⚡",
   href: "https://youshift.vercel.app/", // Replace with actual URL if different
   imgsrc: "assets/projectpics/youshift.png", // Ensure this image exists in your assets
