@@ -1,3 +1,4 @@
+import Dock from '@/components/Dock'
 import Navbar from '@/components/Navbar'
 import Welcome from '@/components/Welcome'
 import React from 'react'
@@ -7,6 +8,7 @@ const page = () => {
     <main>
       <Navbar/>
       <Welcome/>
+      <Dock/>
     </main>
   )
 }
