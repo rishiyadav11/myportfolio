@@ -126,7 +126,7 @@ const mobileRefs = useRef<Array<HTMLSpanElement | null>>([]);
       {/* Mobile Dock */}
       <section
         id="dock-mobile"
-        className="hidden max-sm:flex fixed bottom-3 left-0 right-0 z-50 justify-center pointer-events-auto"
+        className="hidden max-sm:flex fixed bottom-3 left-0 right-0 z-50 max-sm:z-[99999] justify-center pointer-events-auto"
       >
         <div className="bg-white/10 backdrop-blur-md rounded-full px-3 py-2 flex items-center gap-3 mx-4 shadow-lg">
           {dockApps.map(({ id, icon, name, canOpen }, i) => (

@@ -31,46 +31,33 @@ if (typeof window !== 'undefined') {
 }
 
 const Resume = () => {
-// ... (rest of your component logic remains the same)
-  // Detect screen sizes
-  const isMobile = useMediaQuery({ query: '(max-width: 640px)' }) // sm
-  const isTablet = useMediaQuery({ query: '(min-width: 641px) and (max-width: 1024px)' }) // md
-  const isPC = useMediaQuery({ query: '(min-width: 1025px)' }) // lg+
+  const isMobile = useMediaQuery({ query: "(max-width: 640px)" });
+  const isTablet = useMediaQuery({ query: "(min-width: 641px) and (max-width: 1024px)" });
+  const isPC = useMediaQuery({ query: "(min-width: 1025px)" });
 
-  // Set scale based on screen size
-  const scale = isMobile ? 0.5 : isTablet ? 0.6 : 0.9
+  const scale = isMobile ? 0.6 : isTablet ? 0.7 : 0.95;
 
   return (
-    <>
-      <div id='window-header' className="flex items-center justify-between">
+    <div className="flex h-full flex-col max-sm:overflow-hidden">
+      <div
+        id="window-header"
+        className="flex items-center justify-between gap-4 sticky top-0 z-10"
+      >
         <WindowControl target="resume" />
-        <h2>Resume.pdf</h2>
-        <a
-          href="files/resume.pdf"
-          download
-          className='cursor-pointer'
-          title='Download Resume'
-        >
-          <Download className='icon'/>
+        <h2 className="text-sm font-semibold">Resume.pdf</h2>
+        <a href="files/resume.pdf" download className="cursor-pointer" title="Download Resume">
+          <Download className="icon" />
         </a>
       </div>
 
-      <div className="flex justify-center p-4">
-        <Document
-          file="files/resume.pdf"
-          loading={<p>Loading Resume...</p>}
-        >
-          <Page
-            pageNumber={1}
-            scale={scale}
-            renderAnnotationLayer // You are using this prop
-            renderTextLayer     // You are using this prop
-          />
+      <div className="flex-1 overflow-auto p-4 flex justify-center bg-gray-50 max-sm:bg-transparent">
+        <Document file="files/resume.pdf" loading={<p>Loading Resume...</p>}>
+          <Page pageNumber={1} scale={scale} renderAnnotationLayer renderTextLayer />
         </Document>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
 const ResumeWindow = WindowWrapper(Resume, "resume")
 
