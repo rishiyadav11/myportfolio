@@ -183,72 +183,108 @@ const Safari = () => {
     },
   ]);
 
-  return (
-    <div className="flex h-full flex-col overflow-hidden">
-      {/* HEADER */}
+return (
+<div className="flex h-full flex-col overflow-hidden bg-white   dark:bg-slate-900">
+
+  {/* HEADER */}
+  <div
+    id="window-header"
+    className="flex flex-wrap items-center gap-3 justify-between 
+    sticky top-0 z-10 
+    bg-white dark:bg-slate-900 
+    border-b border-gray-200 dark:border-slate-800"
+  >
+    <WindowControl target="safari" />
+
+    <PanelLeft className="ml-10 icon max-sm:hidden text-gray-700 dark:text-gray-300" />
+
+    <div className="flex items-center gap-1 ml-2">
+      <ChevronLeft className="icon text-gray-700 dark:text-gray-300" />
+      <ChevronRight className="icon text-gray-700 dark:text-gray-300" />
+    </div>
+
+    <div className="flex-1 flex-center gap-3 max-sm:flex-col max-sm:items-stretch">
+      <ShieldHalf className="icon max-sm:hidden text-gray-700 dark:text-gray-300" />
+
+      {/* SEARCH BAR */}
       <div
-        id="window-header"
-        className="flex flex-wrap items-center gap-3 justify-between sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800"
+        className="max-sm:w-full flex items-center gap-2 
+        bg-gray-100 dark:bg-slate-800 
+        border border-gray-300 dark:border-slate-700 
+        px-3 py-2 rounded-lg"
       >
-        <WindowControl target="safari" />
-        <PanelLeft className="ml-10 icon max-sm:hidden" />
-        <div className="flex items-center gap-1 ml-2">
-          <ChevronLeft className="icon" />
-          <ChevronRight className="icon" />
-        </div>
-        <div className="flex-1 flex-center gap-3 max-sm:flex-col max-sm:items-stretch">
-          <ShieldHalf className="icon max-sm:hidden" />
-          <div className="search max-sm:w-full">
-            <Search className="icon" />
-            <input
-              type="text"
-              placeholder="Search Projects..."
-              className="flex-1"
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center gap-5">
-          <Share className="icon max-sm:hidden" />
-          <Plus className="icon" />
-          <Copy className="icon" />
-        </div>
+        <Search className="icon text-gray-600 dark:text-gray-300" />
+        <input
+          type="text"
+          placeholder="Search Projects..."
+          className="flex-1 bg-transparent 
+          text-gray-900 dark:text-gray-100 
+          placeholder-gray-500 dark:placeholder-gray-400 
+          outline-none"
+        />
       </div>
+    </div>
 
-   {/* PROJECT LIST */}
-<div className="flex-1 overflow-y-auto overflow-x-hidden px-4 py-6 space-y-10">
-  <h2 className="text-3xl font-bold mb-5 text-center">My Projects</h2>
+    <div className="flex items-center gap-5">
+      <Share className="icon max-sm:hidden text-gray-700 dark:text-gray-300" />
+      <Plus className="icon text-gray-700 dark:text-gray-300" />
+      <Copy className="icon text-gray-700 dark:text-gray-300" />
+    </div>
+  </div>
 
-  {projects.map((p, i) => (
-    <motion.div
-      key={i}
-      whileHover={{ scale: 1, y: -5 }}
-      transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className="bg-gray-900/20 border border-gray-700/50 rounded-xl p-6 md:grid md:grid-cols-2 md:h-[24rem] gap-6 shadow-lg"
-    >
-      <img
-        src={p.imgsrc}
-        alt={p.name}
-        className="w-full h-72 md:h-full object-cover rounded-lg"
-      />
-      <div className="flex flex-col gap-4">
-        <h3 className="text-3xl font-bold">{p.name}</h3>
-        <p className="text-gray-300 text-lg">{p.description}</p>
-        <a
-          href={p.href}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-block bg-green-500 text-white px-6 py-3 rounded-lg w-max hover:bg-green-600 transition-colors text-lg"
-        >
-          Live Link
-        </a>
-      </div>
-    </motion.div>
-  ))}
+  {/* PROJECT LIST */}
+<div className="flex-1 overflow-y-auto overflow-x-hidden pb-20 px-4 md:py-6 space-y-10 scrollbar-hide">
+    <h2 className="text-3xl font-bold mb-5 text-center text-gray-900 dark:text-gray-100">
+      My Projects
+    </h2>
+
+    {projects.map((p, i) => (
+      <motion.div
+        key={i}
+        whileHover={{ scale: 1, y: -5 }}
+        transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        className="bg-gray-100 dark:bg-slate-800 
+        border border-gray-300 dark:border-slate-700 
+        rounded-xl p-6 
+        md:grid md:grid-cols-2 md:h-[24rem] 
+        gap-6 shadow-lg"
+      >
+        <img
+          src={p.imgsrc}
+          alt={p.name}
+          className="w-full h-72 md:h-full object-contain md:object-cover rounded-lg"
+        />
+
+        <div className="flex flex-col gap-4">
+          <h3 className="text-3xl mt-4 font-bold text-gray-900 dark:text-gray-100">
+            {p.name}
+          </h3>
+          <p className="text-gray-700 dark:text-gray-300 text-lg">
+            {p.description}
+          </p>
+
+          <a
+            href={p.href}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-block 
+            bg-green-600 dark:bg-green-500 
+            text-white px-6 py-3 rounded-lg 
+            w-max 
+            hover:bg-green-700 dark:hover:bg-green-600 
+            transition-colors text-lg"
+          >
+            Live Link
+          </a>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+
 </div>
 
-    </div>
-  );
+);
+
 };
 
 const SafariWindow = WindowWrapper(Safari, "safari");

@@ -71,86 +71,87 @@ export default function WindowWrapper<P extends object>(
     }, [isOpen, isMinimized, isMobile]);
 
     // Handle visibility & maximize
-    useLayoutEffect(() => {
-      const el = ref.current;
-      if (!el) return;
+useLayoutEffect(() => {
+  const el = ref.current;
+  if (!el) return;
 
-      if (!isOpen || isMinimized) {
-        el.style.display = "none"; // hide when closed or minimized
-        return;
-      }
+  if (!isOpen || isMinimized) {
+    el.style.display = "none";
+    return;
+  }
 
-      el.style.display = "block";
+  el.style.display = "block";
 
-      if (isMobile) {
-        const navHeight =
-          document.querySelector("nav")?.getBoundingClientRect().height ?? 64;
-        const topOffset = Math.round(navHeight);
-        const availableHeight = `calc(var(--app-height) - ${topOffset}px)`;
+  // ⭐ PRIORITY: Photos window custom layout for mobile
+ if (isMobile && windowKey === "photos") {
+  const navHeight =
+    document.querySelector("nav")?.getBoundingClientRect().height ?? 64;
 
-        el.style.position = "fixed";
-        el.style.top = `${topOffset}px`;
-        el.style.left = "0";
-        el.style.right = "0";
-        el.style.width = "100vw";
-        el.style.maxWidth = "100vw";
-        el.style.margin = "0 auto";
-        el.style.bottom = "";
-        el.style.height = availableHeight;
-        el.style.minHeight = availableHeight;
-        el.style.maxHeight = availableHeight;
-        el.style.overflow = "hidden";
+  const availableHeight = `calc(var(--app-height) - ${navHeight}px)`;
 
-        return;
-      }
-      if (isMobile && windowKey === "photos") {
-        const navHeight =
-          document.querySelector("nav")?.getBoundingClientRect().height ?? 64;
-      
-        el.style.position = "fixed";
-        el.style.left = "0%";
-        el.style.top = `calc(${navHeight}px + 50%)`;
-        el.style.transform = "translate(-10%, -60%)";
-      
-        el.style.width = "100vw";
-        el.style.maxWidth = "100vw";
-      
-        const availableHeight = `calc(var(--app-height) - ${navHeight}px)`;
-      
-        el.style.height = availableHeight;
-        el.style.minHeight = availableHeight;
-        el.style.maxHeight = availableHeight;
-      
-        el.style.margin = "0";
-        el.style.overflow = "hidden";
-        return;
-      }
-      
+  el.style.position = "fixed";
+  el.style.left = "5%";
+  el.style.top = `calc(${navHeight}px + 50%)`;
+  el.style.transform = "translate(-50%, -50%)";
+  
+  el.style.width = "92vw"; // centered and not full screen
+  el.style.maxWidth = "92vw";
+  el.style.height = availableHeight;
+  el.style.maxHeight = availableHeight;
+  el.style.minHeight = "auto";
 
-      // reset mobile overrides
-      el.style.position = "";
-      el.style.right = "";
-      el.style.bottom = "";
-      el.style.maxWidth = "";
-      el.style.margin = "";
-      el.style.overflow = "";
-      el.style.height = "";
-      el.style.minHeight = "";
-      el.style.maxHeight = "";
+  el.style.margin = "0 auto";
+  el.style.overflow = "hidden";
 
-      // Maximize logic
-      if (isMaximized) {
-        el.style.top = "0";
-        el.style.left = "0";
-        el.style.width = "100vw";
-        el.style.height = "100dvh";
-      } else {
-        el.style.width = "";
-        el.style.height = "";
-        el.style.top = "";
-        el.style.left = "";
-      }
-    }, [isOpen, isMinimized, isMaximized, isMobile]);
+  return;
+}
+
+
+  // ⭐ Default mobile layout for other windows
+  if (isMobile) {
+    const navHeight =
+      document.querySelector("nav")?.getBoundingClientRect().height ?? 64;
+
+    const availableHeight = `calc(var(--app-height) - ${navHeight}px)`;
+
+    el.style.position = "fixed";
+    el.style.top = `${navHeight}px`;
+    el.style.left = "0";
+    el.style.right = "0";
+    el.style.width = "100vw";
+    el.style.height = availableHeight;
+    el.style.maxHeight = availableHeight;
+    el.style.minHeight = availableHeight;
+    el.style.margin = "0 auto";
+    el.style.overflow = "hidden";
+
+    return;
+  }
+
+  // Desktop reset
+  el.style.position = "";
+  el.style.right = "";
+  el.style.bottom = "";
+  el.style.maxWidth = "";
+  el.style.margin = "";
+  el.style.overflow = "";
+  el.style.height = "";
+  el.style.minHeight = "";
+  el.style.maxHeight = "";
+
+  if (isMaximized) {
+    el.style.top = "0";
+    el.style.left = "0";
+    el.style.width = "100vw";
+    el.style.height = "100dvh";
+  } else {
+    el.style.width = "";
+    el.style.height = "";
+    el.style.top = "";
+    el.style.left = "";
+  }
+}, [isOpen, isMinimized, isMaximized, isMobile]);
+
 
     const shouldSkipFocus = (target: EventTarget | null) => {
       if (!(target instanceof HTMLElement)) return false;

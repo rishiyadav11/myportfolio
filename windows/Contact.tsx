@@ -20,8 +20,8 @@ const Contact = () => {
           <img src="/images/1.jpg" alt="rishi yadav" className="w-40 h-40 object-cover object-top rounded-full" />
         <h3 className="text-xl font-semibold">Let's connect</h3>
 </div>
-        <p>Got an idea ? A bug to squash ? or just wana talk tech? I'm in.</p>
-        <ul className="grid sm:grid-cols-2 gap-3">
+        <p className=' text-center flex justify-center'>Got an idea ? A bug to squash ? or just wana talk tech? I'm in.</p>
+        <ul className="grid sm:grid-cols-2 justify-center gap-3">
           {socials.map(({ id, bg, link, icon, text }) => (
             <li key={id} style={{ backgroundColor: bg }}>
               <a
