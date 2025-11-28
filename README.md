@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+![Portfolio Preview](/public/images/preview.png)
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 🌐 Rishi Yadav — Full Stack Developer
+### Building Modern Web Experiences with React, Next.js, TypeScript & Node.js
+
+<div align="center">
+
+![Badge](https://img.shields.io/badge/Full%20Stack%20Developer-React%20|%20Next.js%20|%20Node.js-blueviolet?style=for-the-badge)
+![Badge](https://img.shields.io/badge/Portfolio-rishiyadav.me-orange?style=for-the-badge)
+
+</div>
+
+---
+
+## 🚀 About Me
+Hi, I'm **Rishi Yadav**, a passionate **Full Stack Developer** crafting interactive, high-performance digital experiences.  
+I blend sleek UI with robust backend systems — turning ideas into production-ready products.
+
+- 💼 Full Stack Developer  
+- ⚙️ Tech stack: **React, Next.js, TypeScript, Tailwind, Node.js, PostgreSQL**  
+- 🚀 Focus: **Frontend Engineering, System Design, Full-Stack Apps**  
+- 🧠 Learning: **Advanced Animations, GSAP, Framer Motion, Web Performance**
+- 🎨 Currently building: **rishiyadav.me — My Personal Portfolio OS**
+
+---
+
+## 🖥️ Live Portfolio
+
+### 👉 **https://rishiyadav.me**
+
+A macOS-inspired web experience featuring:
+
+- ✨ Window-based UI  
+- 📂 Projects Finder  
+- 📁 App-like components  
+- ⚡ Smooth animations  
+- 📱 Fully Responsive  
+- 🎨 Modern Design
+
+---
+
+## 📦 Tech Stack Used
+
+```txt
+Frontend:  React, Next.js, TypeScript, Tailwind, Framer Motion, GSAP  
+Backend:   Node.js, Express, PostgreSQL, Drizzle ORM  
+Tools:     Git, VS Code, Chrome DevTools, Vercel  
+Design:    Figma, Illustrator
+````
+
+---
+
+## 🛠️ Project Structure
+
+```
+📦 rishiyadav.me  
+ ┣ 📂 components  
+ ┣ 📂 windows  
+ ┣ 📂 store  
+ ┣ 📂 constants  
+ ┣ 📂 public  
+ ┣ 📜 next.config.js  
+ ┣ 📜 tailwind.config.js  
+ ┗ 📜 package.json  
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Setup & Run Locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+git clone https://github.com/yourusername/rishiyadav.me.git
+cd rishiyadav.me
+npm install
+npm run dev
+```
 
-## Learn More
+App will run at:
 
-To learn more about Next.js, take a look at the following resources:
+```
+http://localhost:3000
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🤝 Connect With Me
 
-## Deploy on Vercel
+* **LinkedIn:** [https://www.linkedin.com/in/rishiyadav11](https://www.linkedin.com/in/rishiyadav11)
+* **Email:** [photonics54yadav@gmail.com](mailto:photonics54yadav@gmail.com)
+* **GitHub:** [https://github.com/rishiyadav11](https://github.com/rishiyadav11)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧡 Support
+
+If you like my work, **⭐ star this repository**.
+Your support keeps me building more awesome projects!
+
+---
