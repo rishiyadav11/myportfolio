@@ -1,17 +1,21 @@
+"use client"
 import React from "react";
 import {navIcons, navLinks} from "@/constants/index";
 import dayjs from "dayjs";
+import useWindowStore from "@/store/window";
 
 const Navbar = () => {
+
+  const {openWindow} = useWindowStore();
   return <nav>
     <div className="">
         <img src="/images/logo.svg" alt="Logo" width={50} height={50} />
         <p className="font-bold">Rishi yadav's Portfolio</p>
         <ul>
           {
-            navLinks.map((link) => (
-              <li key={link.id}>
-                <a href={`#${link.id}`}>{link.name}</a>
+            navLinks.map((link ) => (
+              <li key={link.id} onClick={()=>openWindow(link.type )}>
+                <p>{link.name}</p>
               </li>
             ))
           }
