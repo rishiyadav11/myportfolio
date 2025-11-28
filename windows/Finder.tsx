@@ -61,7 +61,7 @@ if ("fileType" in item) {
         <Search className="icon" />
       </div>
 
-      <div className="bg-white flex h-full">
+      <div className="window-shell flex h-full">
         <div className="sidebar">
           {renderList("Favorites", Object.values(locations) as LocationType[])}{" "}
           {renderList("Work", locations.work.children as LocationType[])} 

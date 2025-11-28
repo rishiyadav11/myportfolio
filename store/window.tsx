@@ -7,6 +7,8 @@ interface WindowConfigType {
     isOpen: boolean;
     zIndex: number;
     data: any;
+    isMinimized?: boolean;
+    isMaximized?: boolean;
   };
 }
 
@@ -16,6 +18,8 @@ interface WindowStoreType {
   openWindow: (windowKey: string, data?: any) => void;
   CloseWindow: (windowKey: string) => void;
   FocusWindow: (windowKey: string) => void;
+  minimizeWindow: (windowKey: string) => void;
+  toggleMaximizeWindow: (windowKey: string) => void;
 }
 
 const useWindowStore = create<WindowStoreType>()(
@@ -29,6 +33,7 @@ const useWindowStore = create<WindowStoreType>()(
         win.isOpen = true;
         win.zIndex = state.nextZindex;
         win.data = data ?? win.data;
+        win.isMinimized = false;
         state.nextZindex++;
       }),
 
@@ -38,12 +43,29 @@ const useWindowStore = create<WindowStoreType>()(
         win.isOpen = false;
         win.zIndex = INITIAL_Z_INDEX;
         win.data = null;
+        win.isMinimized = false;
+        win.isMaximized = false;
       }),
 
     FocusWindow: (windowKey) =>
       set((state) => {
         const win = state.windows[windowKey];
         win.zIndex = state.nextZindex++;
+      }),
+
+    // ✅ Minimize window
+    minimizeWindow: (windowKey) =>
+      set((state) => {
+        const win = state.windows[windowKey];
+        win.isMinimized = true;
+      }),
+
+    // ✅ Toggle maximize / restore
+    toggleMaximizeWindow: (windowKey) =>
+      set((state) => {
+        const win = state.windows[windowKey];
+        win.isMaximized = !win.isMaximized;
+        win.isMinimized = false;
       }),
   }))
 );

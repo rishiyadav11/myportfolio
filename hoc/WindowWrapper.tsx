@@ -14,14 +14,14 @@ export default function WindowWrapper<P extends object>(
 ) {
   const Wrapped: React.FC<P> = (props) => {
     const { FocusWindow, windows } = useWindowStore();
-
-    const { isOpen, zIndex } = windows[windowKey];
     const ref = React.useRef<HTMLDivElement>(null);
+
+    const { isOpen, zIndex, isMinimized, isMaximized } = windows[windowKey];
 
     // Open animation
     useGSAP(() => {
       const el = ref.current;
-      if (!el || !isOpen) return;
+      if (!el || !isOpen || isMinimized) return; // ignore if minimized
 
       el.style.display = "block";
 
@@ -30,12 +30,12 @@ export default function WindowWrapper<P extends object>(
         { opacity: 0, scale: 0.85, y: 40 },
         { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "power3.out" }
       );
-    }, [isOpen]);
+    }, [isOpen, isMinimized]);
 
     // Make window draggable
     useGSAP(() => {
       const el = ref.current;
-      if (!el || !isOpen) return;
+      if (!el || !isOpen || isMinimized) return;
 
       const draggable = Draggable.create(el, {
         bounds: "body",
@@ -43,15 +43,33 @@ export default function WindowWrapper<P extends object>(
       });
 
       return () => draggable.forEach((d) => d.kill());
-    }, [isOpen]);
+    }, [isOpen, isMinimized]);
 
-    // Hide when closed
+    // Handle visibility & maximize
     useLayoutEffect(() => {
       const el = ref.current;
       if (!el) return;
 
-      el.style.display = isOpen ? "block" : "none";
-    }, [isOpen]);
+      if (!isOpen || isMinimized) {
+        el.style.display = "none"; // hide when closed or minimized
+        return;
+      }
+
+      el.style.display = "block";
+
+      // Maximize logic
+      if (isMaximized) {
+        el.style.top = "0";
+        el.style.left = "0";
+        el.style.width = "100vw";
+        el.style.height = "100vh";
+      } else {
+        el.style.width = "";
+        el.style.height = "";
+        el.style.top = "";
+        el.style.left = "";
+      }
+    }, [isOpen, isMinimized, isMaximized]);
 
     return (
       <section

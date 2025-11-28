@@ -188,21 +188,71 @@ const photosLinks = [
 const gallery = [
   {
     id: 1,
+    name: "Debugging Session",
     img: "/images/gal1.png",
   },
   {
     id: 2,
+    name: "API Endpoint Test",
     img: "/images/gal2.png",
   },
   {
     id: 3,
+    name: "Runtime Logs",
     img: "/images/gal3.png",
   },
   {
     id: 4,
+    name: "Frontend Build Preview",
+    img: "/images/gal4.png",
+  },
+  {
+    id: 5,
+    name: "Refactoring Code",
+    img: "/images/gal4.png",
+  },
+  {
+    id: 6,
+    name: "Component Rendering",
+    img: "/images/gal4.png",
+  },
+  {
+    id: 7,
+    name: "Hook Optimization",
+    img: "/images/gal4.png",
+  },
+  {
+    id: 8,
+    name: "Database Migration",
+    img: "/images/gal4.png",
+  },
+  {
+    id: 9,
+    name: "API Response Check",
+    img: "/images/gal4.png",
+  },
+  {
+    id: 10,
+    name: "Server Deployment",
+    img: "/images/gal4.png",
+  },
+  {
+    id: 11,
+    name: "State Management Flow",
+    img: "/images/gal4.png",
+  },
+  {
+    id: 12,
+    name: "Realtime Debug Console",
+    img: "/images/gal4.png",
+  },
+  {
+    id: 13,
+    name: "Version Control Snapshot",
     img: "/images/gal4.png",
   },
 ];
+
 
 export {
   navLinks,
@@ -229,7 +279,7 @@ const WORK_LOCATION = {
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-5", // icon position inside Finder
-      windowPosition: "top-[5vh] left-5", // optional: Finder window position
+      windowPosition: "top-[5vh] left-3", // optional: Finder window position
       children: [
         {
           id: 1,
@@ -489,18 +539,17 @@ export const locations = {
   resume: RESUME_LOCATION,
   trash: TRASH_LOCATION,
 };
-
 const INITIAL_Z_INDEX = 1000;
 
 const WINDOW_CONFIG = {
-  finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  contact: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  resume: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  safari: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  photos: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, isMinimized: false, isMaximized: false },
+  contact: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, isMinimized: false, isMaximized: false },
+  resume: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, isMinimized: false, isMaximized: false },
+  safari: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, isMinimized: false, isMaximized: false },
+  photos: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, isMinimized: false, isMaximized: false },
+  terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, isMinimized: false, isMaximized: false },
+  txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, isMinimized: false, isMaximized: false },
+  imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, isMinimized: false, isMaximized: false },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };

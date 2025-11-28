@@ -7,12 +7,12 @@ const FONT_WEIGHTS = {
   title: { min: 300, max: 900, base: 400 },
 };
 
+// Function to render characters with base font size class
 const renderChars = (text: string, className: string, base: number) =>
   [...text].map((char, i) => (
     <span
       key={i}
       className={className}
-      // ensure each span starts with base weight
       style={{ fontVariationSettings: `"wght" ${base}`, display: "inline-block" }}
     >
       {char === " " ? "\u00A0" : char}
@@ -25,7 +25,6 @@ const Welcome: React.FC = () => {
 
   const setupHover = (container: HTMLElement | null, type: keyof typeof FONT_WEIGHTS) => {
     if (!container) return () => {};
-
     const letters = Array.from(container.querySelectorAll("span"));
     const { min, max, base } = FONT_WEIGHTS[type];
 
@@ -54,7 +53,7 @@ const Welcome: React.FC = () => {
         const lr = letter.getBoundingClientRect();
         const centerX = lr.left - rect.left + lr.width / 2;
         const distance = Math.abs(mouseX - centerX);
-const t = Math.exp(-(distance * distance) / (falloff * falloff * 0.5));
+        const t = Math.exp(-(distance * distance) / (falloff * falloff * 0.5));
         const w = min + (max - min) * t;
         animateWeight(letter as HTMLElement, w);
       });
@@ -74,13 +73,10 @@ const t = Math.exp(-(distance * distance) / (falloff * falloff * 0.5));
   };
 
   useEffect(() => {
-    // optional: wait for fonts to be ready to avoid first-interaction flicker
     document.fonts?.ready?.then(() => {
       const clean1 = setupHover(titleRef.current, "title");
       const clean2 = setupHover(subRef.current, "subtitle");
-
-      // cleanup function
-      (window as any).__welcomeCleanups = [clean1, clean2]; // store if needed elsewhere
+      (window as any).__welcomeCleanups = [clean1, clean2];
     });
 
     return () => {
@@ -91,34 +87,28 @@ const t = Math.exp(-(distance * distance) / (falloff * falloff * 0.5));
   }, []);
 
   return (
-    <section id="welcome" className="p-10" style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
+    <section id="welcome" className="p-6 sm:p-10 md:p-16" style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
       <p
         ref={subRef as React.RefObject<HTMLParagraphElement>}
         className="inline-block cursor-default font-inter"
-        style={{ fontFamily: "Inter, system-ui, sans-serif" }}
       >
         {renderChars(
           "Hey, I'm Rishi Yadav! Welcome to my ",
-          "text-3xl font-inter",
+          "text-base sm:text-lg md:text-xl lg:text-2xl font-inter",
           FONT_WEIGHTS.subtitle.base
         )}
       </p>
 
       <h1
         ref={titleRef as React.RefObject<HTMLHeadingElement>}
-        className="mt-7 inline-block font-inter"
-        style={{ fontFamily: "Inter, system-ui, sans-serif" }}
+        className="mt-4 sm:mt-7 inline-block font-inter"
       >
         {renderChars(
           "Portfolio",
-          "text-9xl italic font-inter",
+          "text-4xl sm:text-6xl md:text-7xl lg:text-9xl italic font-inter",
           FONT_WEIGHTS.title.base
         )}
       </h1>
-
-      <div className="small-screen">
-        <p>This is designed for tablet and bigger screens.</p>
-      </div>
     </section>
   );
 };
