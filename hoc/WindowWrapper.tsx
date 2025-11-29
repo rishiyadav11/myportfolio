@@ -173,17 +173,20 @@ useLayoutEffect(() => {
       minHeight: isMobile ? "var(--app-height)" : undefined,
     };
 
-    return (
-      <section
-        ref={ref}
-        id={windowKey}
-        className="absolute"
-        style={sectionStyle}
-        onPointerDown={handlePointerDown}
-      >
-        <Component {...props} />
-      </section>
-    );
+  if (!isOpen || isMinimized) return null;
+
+return (
+  <section
+    ref={ref}
+    id={windowKey}  
+    className="absolute"
+    style={sectionStyle}
+    onPointerDown={handlePointerDown}
+  >
+    <Component {...props} />
+  </section>
+);
+
   };
 
   Wrapped.displayName = `WindowWrapper(${

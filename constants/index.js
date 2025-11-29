@@ -223,7 +223,7 @@ const WORK_LOCATION = {
     // ▶ Project 1 — RB Health Club
     {
       id: 5,
-      name: "RB Health Club 🏥",
+      name: "RB Health Club ",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-5",
@@ -266,7 +266,7 @@ const WORK_LOCATION = {
     // ▶ Project 2 — Baemark
     {
       id: 6,
-      name: "Baemark 💖",
+      name: "Baemark ",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
@@ -309,7 +309,7 @@ const WORK_LOCATION = {
     // ▶ Project 3 — Pariksha Career Institute
     {
       id: 7,
-      name: "Pariksha Career Institute 🎓",
+      name: "Pariksha Career Institute ",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",
