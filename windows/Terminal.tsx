@@ -17,7 +17,7 @@ const Terminal = () => {
         <h2 className="text-sm font-semibold">Tech stacks</h2>
       </div>
 
-      <div className="techstack flex-1 overflow-y-auto">
+      <div className="techstack flex-1 overflow-y-auto pb-44">
         <span className="font-bold">@rishiyadav %</span> show techstacks
         <div className="label">
           <p className="w-32 font-semibold max-sm:w-24">Category</p>

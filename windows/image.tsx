@@ -16,7 +16,7 @@ const ImageFile = () => {
   if (!data) return null;
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-[70vh]">
       {/* Header */}
       <div
         id="window-header"

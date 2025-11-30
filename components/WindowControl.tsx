@@ -16,7 +16,7 @@ const WindowControl = ({ target }: { target: string }) => {
 
       {/* Close */}
       <button
-        className={`${btnStyle} bg-[#ff5f57] hover:scale-110 transition`}
+        className={`${btnStyle} bg-[#ff5f57] hover:cursor-pointer hover:scale-110 transition`}
         onClick={() => CloseWindow(target)}
       >
         <RxCross2 size={8} />
@@ -24,7 +24,7 @@ const WindowControl = ({ target }: { target: string }) => {
 
       {/* Minimize */}
       <button
-        className={`${btnStyle} bg-[#febc2e] hover:scale-110 transition`}
+        className={`${btnStyle} bg-[#febc2e] hover:cursor-pointer hover:scale-110 transition`}
         onClick={() => CloseWindow(target)}
       >
         <FiMinus size={10} />
@@ -32,8 +32,8 @@ const WindowControl = ({ target }: { target: string }) => {
 
       {/* Maximize */}
       <button
-        className={`${btnStyle} bg-[#28c840] hover:scale-110 transition`}
-        onClick={() => toggleMaximizeWindow(target)}
+        className={`${btnStyle} bg-[#28c840] transition`}
+        
       >
         <FiMaximize2 size={9} />
       </button>

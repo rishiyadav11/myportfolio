@@ -7,7 +7,7 @@ import React from "react";
 
 const Gallery = () => {
   return (
-    <div className="flex h-screen   flex-col max-sm:overflow-hidden ">
+    <div className="flex h-screen   flex-col  max-sm:overflow-hidden ">
       <div id="window-header" className=" w-80 ">
         <WindowControl target="photos" />
         <div className="flex-1 text-center">
@@ -16,7 +16,7 @@ const Gallery = () => {
         </div>
       </div>
 
-      <div className="window-shell flex flex-1 overflow-hidden">
+      <div className="window-shell flex flex-1 overflow-hidden ">
         <aside className="sidebar hidden md:flex">
           <div>
             <h2>Library</h2>
@@ -56,7 +56,7 @@ const Gallery = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-3 pb-2">
+          <div className="grid grid-cols-1 pb-44 sm:grid-cols-2 md:grid-cols-2 gap-3 pb-2">
             {gallery.map((shot) => (
               <div
                 key={shot.id}
