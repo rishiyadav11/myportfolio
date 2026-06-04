@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-background: #010828;
+  --color-on-background: #e4e1e5;
+  --color-surface: #131316;
+  --color-surface-dim: #131316;
+  --color-surface-bright: #39393c;
+  --color-surface-lowest: #0e0e10;
+  --color-surface-low: #1b1b1e;
+  --color-surface-container: #1f1f22;
+  --color-surface-high: #2a2a2c;
+  --color-surface-highest: #353437;
+  --color-on-surface: #EFF4FF;
+  --color-on-surface-variant: #c6c6cf;
+  --color-outline: #909098;
+  --color-outline-variant: #45464e;
+  
+  --color-primary: #bcc5ed;
+  --color-on-primary: #262f4f;
+  --color-primary-container: #010828;
+  --color-on-primary-container: #70789d;
+  --color-inverse-primary: #545d80;
+  
+  --color-secondary: #c1c7d1;
+  --color-on-secondary: #2b3139;
+  --color-secondary-container: #414750;
+  --color-on-secondary-container: #b0b5c0;
+  
+  --color-tertiary: #6FFF00;
+  --color-on-tertiary: #133800;
+  --color-tertiary-container: #020e00;
+  --color-on-tertiary-container: #3a8b00;
+
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  
+  --font-anton: var(--font-anton), sans-serif;
+  --font-jetbrains-mono: var(--font-jetbrains-mono), monospace;
+  --font-condiment: var(--font-condiment), cursive;
+  
+  --font-display-lg: var(--font-anton);
+  --font-body-md: var(--font-jetbrains-mono);
+  --font-accent-cursive: var(--font-condiment);
+  
+  --spacing-margin-desktop: 64px;
+  --spacing-section-gap: 160px;
+  --spacing-unit: 8px;
+  --spacing-margin-mobile: 20px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1280px;
+
+  --animate-float: float 6s ease-in-out infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes dash {
+  to { stroke-dashoffset: -210; }
+}
+
+.animate-dash {
+  animation: dash 3s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-jetbrains-mono);
+  overflow-x: hidden;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-tertiary);
+}
+
+/* Glassmorphism details */
+.glass-stroke {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.neon-glow {
+  text-shadow: 0 0 10px rgba(111, 255, 0, 0.5), 0 0 20px rgba(111, 255, 0, 0.2);
+}
+
+.glow-purple {
+  box-shadow: 0 0 40px rgba(188, 197, 237, 0.08);
+}
+
+.neon-underline {
+  position: relative;
+}
+.neon-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background-color: var(--color-tertiary);
+  border-radius: 2px;
+}
+
+.texture-overlay {
+  pointer-events: none;
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.25;
+  mix-blend-mode: lighten;
+}
+
+.grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Utility to override grayscale */
+.img-grayscale-hover {
+  filter: grayscale(1);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.img-grayscale-hover:hover {
+  filter: grayscale(0);
 }
