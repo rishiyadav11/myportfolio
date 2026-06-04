@@ -21,7 +21,7 @@ const condiment = Condiment({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.rishiyadav.dev"), // fallback base URL for canonicals
+  metadataBase: new URL("https://rishiyadav.space"), // fallback base URL for canonicals
   title: {
     default: "Rishi Yadav | Best Developer in Haryana | Full-Stack Software Engineer in Gurgaon, Rewari, Narnaul",
     template: "%s | Rishi Yadav - Best Developer in Haryana",
@@ -54,13 +54,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rishi Yadav | Best Developer in Haryana | Full-Stack Software Engineer",
     description: "Portfolio of Rishi Yadav. Specialized in high-performance AI workflows, RAG engines, and scalable distributed SaaS applications in Gurgaon, Rewari, Narnaul, and Delhi NCR.",
-    url: "https://www.rishiyadav.dev",
+    url: "https://rishiyadav.space",
     siteName: "Rishi Yadav Portfolio",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/OG.png",
+        url: "/OG.jpg",
         width: 1200,
         height: 630,
         alt: "Rishi Yadav | Best Developer in Haryana | Full-Stack Software Engineer",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     title: "Rishi Yadav | Best Developer in Haryana | Full-Stack Software Engineer",
     description: "Portfolio of Rishi Yadav. Specialized in building high-performance AI workflows, RAG engines, and scalable distributed SaaS applications.",
     creator: "@RishiYadav5911",
-    images: ["/OG.png"],
+    images: ["/OG.jpg"],
   },
   robots: {
     index: true,
