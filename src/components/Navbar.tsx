@@ -48,12 +48,8 @@ export default function Navbar() {
           scrolled ? "py-2 mt-2 bg-black/40 backdrop-blur-2xl" : "py-3 mt-4"
         }`}
       >
-        <Link href="/" className="flex items-center gap-2 hover:opacity-85 transition-opacity py-1.5">
-          <img
-            src="/LOGO.png"
-            alt={portfolioData.personal.name}
-            className="h-8 sm:h-10 w-auto object-contain"
-          />
+        <Link href="/" className="font-jetbrains-mono text-sm sm:text-base font-bold uppercase tracking-widest text-on-surface hover:text-tertiary transition-colors py-1.5">
+          {portfolioData.personal.name}
         </Link>
         
         {/* Desktop Menu */}
