@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, BookOpen, Layers } from "lucide-react";
+import { ExternalLink, BookOpen, Layers, Lock, Sparkles, ShieldCheck, ArrowRight } from "lucide-react";
 import { portfolioData, Project } from "@/data/portfolioData";
 
 export default function Projects() {
@@ -151,6 +152,85 @@ export default function Projects() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Confidentiality & Upcoming Projects Notice */}
+        {portfolioData.projects.notice && (
+          <div className="mt-20 relative liquid-glass glass-stroke p-8 sm:p-12 rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl">
+            {/* Ambient Background Glows */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-tertiary/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div className="relative z-10">
+              {/* Header Badge */}
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <div className="inline-flex items-center gap-2 bg-tertiary/10 border border-tertiary/30 px-3.5 py-1.5 rounded-full">
+                  <Lock size={12} className="text-tertiary" />
+                  <span className="font-jetbrains-mono text-[11px] font-bold text-tertiary uppercase tracking-wider">
+                    {portfolioData.projects.notice.badge}
+                  </span>
+                </div>
+                <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
+                  <Sparkles size={12} className="text-primary" />
+                  <span className="font-jetbrains-mono text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">
+                    Private &amp; Incubation Queue
+                  </span>
+                </div>
+              </div>
+
+              {/* Title & Description */}
+              <h3 className="font-anton text-2xl sm:text-4xl uppercase text-on-surface tracking-tight mb-4 max-w-3xl">
+                {portfolioData.projects.notice.title}
+              </h3>
+              <p className="font-jetbrains-mono text-xs sm:text-sm text-on-surface-variant leading-relaxed max-w-4xl mb-8">
+                {portfolioData.projects.notice.description}
+              </p>
+
+              {/* 3 Pillars / Highlights Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                {portfolioData.projects.notice.highlights.map((item, i) => (
+                  <div
+                    key={i}
+                    className="p-5 rounded-2xl bg-[#010828]/60 border border-white/5 flex flex-col justify-between hover:border-tertiary/30 transition-colors"
+                  >
+                    <div className="flex items-center gap-2.5 mb-2">
+                      <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                      <h4 className="font-jetbrains-mono text-xs font-bold uppercase tracking-wider text-on-surface">
+                        {item.label}
+                      </h4>
+                    </div>
+                    <p className="font-jetbrains-mono text-[11px] text-on-surface-variant/80 leading-normal">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Action Trigger */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6 pt-6 border-t border-white/5">
+                <span className="font-jetbrains-mono text-xs text-on-surface-variant/70 flex items-center gap-2">
+                  <ShieldCheck size={16} className="text-tertiary shrink-0" />
+                  Direct verification &amp; private architecture walkthroughs available upon inquiry.
+                </span>
+
+                <div className="flex items-center gap-4 flex-wrap">
+                  <Link
+                    href={portfolioData.projects.notice.ctaLink}
+                    className="px-8 py-3.5 rounded-full bg-tertiary text-on-tertiary font-jetbrains-mono text-xs font-bold uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(111,255,0,0.3)] inline-flex items-center justify-center gap-2"
+                  >
+                    <span>{portfolioData.projects.notice.ctaText}</span>
+                    <ArrowRight size={14} />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="px-6 py-3.5 rounded-full liquid-glass glass-stroke font-jetbrains-mono text-xs font-bold uppercase tracking-wider text-on-surface hover:bg-white/10 active:scale-95 transition-all inline-flex items-center justify-center"
+                  >
+                    Contact Directly
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

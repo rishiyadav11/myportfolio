@@ -32,7 +32,7 @@ export default function HireMeClient() {
       const text = encodeURIComponent(
         `*New Project Spec Submission*\n\n*Name:* ${name}\n*Email:* ${email}\n*Scope:* ${scope}\n*Budget:* ${budget}\n\n*Project Details:*\n${details}`
       );
-      const phoneNum = portfolioData.personal.phone || "+919999999999";
+      const phoneNum = portfolioData.personal.phone || "+918708905369";
       // Format to digits only for WhatsApp (omit +, spaces, brackets, or dashes)
       const cleanPhone = phoneNum.replace(/[^\d]/g, "");
       window.open(`https://wa.me/${cleanPhone}?text=${text}`, "_blank");
@@ -194,7 +194,11 @@ export default function HireMeClient() {
               </span>
               <button
                 type="submit"
-                className="w-full sm:w-auto order-1 sm:order-2 px-12 py-4 rounded-full bg-tertiary text-on-tertiary font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(111,255,0,0.3)] hover:shadow-[0_0_30px_rgba(111,255,0,0.5)]"
+                className={`w-full sm:w-auto order-1 sm:order-2 px-12 py-4 rounded-full font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all ${
+                  channel === "whatsapp"
+                    ? "bg-[#25D366] text-[#052e16] shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)]"
+                    : "bg-tertiary text-on-tertiary shadow-[0_0_20px_rgba(111,255,0,0.3)] hover:shadow-[0_0_30px_rgba(111,255,0,0.5)]"
+                }`}
               >
                 {channel === "email" ? "DISPATCH EMAIL" : "SEND WHATSAPP"}
               </button>

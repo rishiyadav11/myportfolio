@@ -60,15 +60,40 @@ const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    {...props}
+  >
+    <path d="M12.031 2C6.494 2 2 6.494 2 12.031c0 1.808.478 3.513 1.319 5.006L2 22l5.127-1.306A9.972 9.972 0 0 0 12.031 22C17.568 22 22 17.506 22 12.031S17.568 2 12.031 2zm5.83 14.18c-.244.689-1.218 1.272-1.748 1.348-.52.073-1.187.102-1.921-.133-.446-.142-1.02-.336-1.758-.657-3.1-1.353-5.118-4.494-5.275-4.704-.154-.21-1.26-1.68-1.26-3.205 0-1.526.8-2.278 1.084-2.585.283-.307.618-.385.823-.385.205 0 .411.002.59.011.19.009.444-.072.693.528.258.621.879 2.148.956 2.304.077.157.129.34.025.547-.103.21-.154.34-.307.52-.154.18-.325.402-.464.54-.154.153-.314.32-.135.628.18.307.798 1.317 1.71 2.13 1.173 1.045 2.16 1.368 2.467 1.522.307.153.487.128.667-.077.18-.205.77-0.898.976-1.206.205-.307.411-.256.693-.153.282.103 1.796.847 2.104 1.001.308.154.513.23.59.359.077.128.077.743-.167 1.432z" />
+  </svg>
+);
+
 export default function Sidebar() {
+  const cleanPhone = (portfolioData.personal.phone || "+918708905369").replace(/[^\d]/g, "");
+  const whatsappUrl = `https://wa.me/${cleanPhone}`;
+
   return (
     <aside className="fixed left-3 sm:left-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-3 sm:gap-4 items-center bg-white/3 backdrop-blur-2xl rounded-full py-5 px-2 sm:py-6 sm:px-3 glass-stroke shadow-2xl">
       <a
         className="text-on-surface-variant hover:text-tertiary p-2 sm:p-3 hover:-translate-x-1 transition-all duration-300 hover:scale-110"
         href={`mailto:${portfolioData.personal.email}`}
-        title="Mail"
+        title="Email"
       >
         <Mail size={18} />
+      </a>
+      <a
+        className="text-on-surface-variant hover:text-[#25D366] p-2 sm:p-3 hover:-translate-x-1 transition-all duration-300 hover:scale-110"
+        href={whatsappUrl}
+        title="WhatsApp (+91 87089 05369)"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <WhatsAppIcon />
       </a>
       <a
         className="text-on-surface-variant hover:text-tertiary p-2 sm:p-3 hover:-translate-x-1 transition-all duration-300 hover:scale-110"

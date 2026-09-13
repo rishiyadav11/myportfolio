@@ -4,8 +4,8 @@ import Sidebar from "@/components/Sidebar";
 import { portfolioData } from "@/data/portfolioData";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Privacy Policy details for Rishi Yadav's personal developer portfolio and Reworks Studio.",
+  title: "Privacy Policy | Rishi Yadav Dev - Reworks Studio",
+  description: "Privacy policy and client data protection commitments for Rishi Yadav (Reworks Studio), website developer and AI software engineer based in Haryana, India.",
   alternates: {
     canonical: "/privacy",
   },

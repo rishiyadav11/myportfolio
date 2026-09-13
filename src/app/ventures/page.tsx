@@ -6,10 +6,28 @@ import Sidebar from "@/components/Sidebar";
 import { portfolioData } from "@/data/portfolioData";
 
 export const metadata: Metadata = {
-  title: "Reworks Studio Ventures | Rishi Yadav Software Developer",
-  description: "Learn about the SaaS development, e-commerce, custom internal tools, and AI integration services offered by Rishi Yadav (rishi yadav dev) at Reworks Studio in Haryana.",
+  title: "Reworks Studio Ventures & Services | Rishi Yadav Dev - Best Web Developer in Haryana & India",
+  description: "Explore services by Reworks Studio, founded by Rishi Yadav (rishi yadav developer). End-to-end custom website development, SaaS prototyping 0-to-1, agentic AI systems, and cloud architectures in Haryana, Delhi NCR, and India.",
+  keywords: [
+    "Reworks Studio",
+    "Rishi Yadav services",
+    "rishi yadav dev",
+    "rishi yadav developer",
+    "best website developer in haryana",
+    "best website developer in india",
+    "web development services Haryana",
+    "SaaS agency India",
+    "AI development company Gurgaon",
+    "Next.js agency Delhi NCR",
+    "custom web app development India",
+  ],
   alternates: {
     canonical: "/ventures",
+  },
+  openGraph: {
+    title: "Reworks Studio Ventures | Rishi Yadav Dev - Best Web Developer",
+    description: "SaaS prototyping, custom web engineering, and AI integrations by Rishi Yadav (Reworks Studio).",
+    url: "https://rishiyadav.space/ventures",
   },
 };
 
