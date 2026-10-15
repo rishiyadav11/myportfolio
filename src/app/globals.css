@@ -1,149 +1,562 @@
 @import "tailwindcss";
 
-@theme {
-  --color-background: #010828;
-  --color-on-background: #e4e1e5;
-  --color-surface: #131316;
-  --color-surface-dim: #131316;
-  --color-surface-bright: #39393c;
-  --color-surface-lowest: #0e0e10;
-  --color-surface-low: #1b1b1e;
-  --color-surface-container: #1f1f22;
-  --color-surface-high: #2a2a2c;
-  --color-surface-highest: #353437;
-  --color-on-surface: #EFF4FF;
-  --color-on-surface-variant: #c6c6cf;
-  --color-outline: #909098;
-  --color-outline-variant: #45464e;
-  
-  --color-primary: #bcc5ed;
-  --color-on-primary: #262f4f;
-  --color-primary-container: #010828;
-  --color-on-primary-container: #70789d;
-  --color-inverse-primary: #545d80;
-  
-  --color-secondary: #c1c7d1;
-  --color-on-secondary: #2b3139;
-  --color-secondary-container: #414750;
-  --color-on-secondary-container: #b0b5c0;
-  
-  --color-tertiary: #6FFF00;
-  --color-on-tertiary: #133800;
-  --color-tertiary-container: #020e00;
-  --color-on-tertiary-container: #3a8b00;
+/* ------------------------------------------------------------------
+   Design tokens. Every colour is a CSS variable; Tailwind utilities
+   (bg-bg, text-ink, text-muted, border-line, bg-accent…) map to them.
+   Light is default; dark follows the OS unless the toggle overrides it.
 
-  --color-error: #ffb4ab;
-  --color-on-error: #690005;
-  --color-error-container: #93000a;
-  
-  --font-anton: var(--font-anton), sans-serif;
-  --font-jetbrains-mono: var(--font-jetbrains-mono), monospace;
-  --font-condiment: var(--font-condiment), cursive;
-  
-  --font-display-lg: var(--font-anton);
-  --font-body-md: var(--font-jetbrains-mono);
-  --font-accent-cursive: var(--font-condiment);
-  
-  --spacing-margin-desktop: 64px;
-  --spacing-section-gap: 160px;
-  --spacing-unit: 8px;
-  --spacing-margin-mobile: 20px;
-  --spacing-gutter: 24px;
-  --spacing-container-max: 1280px;
-
-  --animate-float: float 6s ease-in-out infinite;
+   Palette: warm paper, near-black ink, one vermilion accent.
+   --accent is for fills and large shapes; --accent-text is the
+   AA-safe version for small text on the page background.
+   ------------------------------------------------------------------ */
+:root {
+  --bg: #f3efe6;
+  --surface: #fbf9f4;
+  --surface-2: #e9e4d8;
+  --ink: #141312;
+  --ink-2: #3a3734;
+  --muted: #6b665f;
+  --line: #d9d3c5;
+  --line-strong: #bdb5a4;
+  --accent: #e8491d;
+  --accent-hover: #d13d14;
+  --accent-ink: #141312;
+  --accent-text: #b5360d;
+  --accent-soft: #f6dccf;
+  --success: #1e6b3f;
+  --warning: #8a5a00;
+  --danger: #b3261e;
+  --focus: #b5360d;
+  --shadow: 0 1px 0 rgb(20 19 18 / 0.04), 0 12px 32px -12px rgb(20 19 18 / 0.18);
+  color-scheme: light;
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12110f;
+    --surface: #1b1a17;
+    --surface-2: #24221e;
+    --ink: #f1ece2;
+    --ink-2: #d6d0c4;
+    --muted: #a39d92;
+    --line: #2f2c27;
+    --line-strong: #47433b;
+    --accent: #ff6a3d;
+    --accent-hover: #ff8560;
+    --accent-ink: #12110f;
+    --accent-text: #ff8560;
+    --accent-soft: #3a1d12;
+    --success: #7fc8a3;
+    --warning: #e2b55c;
+    --danger: #f08a80;
+    --focus: #ff8560;
+    --shadow: 0 1px 0 rgb(0 0 0 / 0.3), 0 16px 40px -12px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
 }
 
-@keyframes dash {
-  to { stroke-dashoffset: -210; }
+:root[data-theme="dark"] {
+  --bg: #12110f;
+  --surface: #1b1a17;
+  --surface-2: #24221e;
+  --ink: #f1ece2;
+  --ink-2: #d6d0c4;
+  --muted: #a39d92;
+  --line: #2f2c27;
+  --line-strong: #47433b;
+  --accent: #ff6a3d;
+  --accent-hover: #ff8560;
+  --accent-ink: #12110f;
+  --accent-text: #ff8560;
+  --accent-soft: #3a1d12;
+  --success: #7fc8a3;
+  --warning: #e2b55c;
+  --danger: #f08a80;
+  --focus: #ff8560;
+  --shadow: 0 1px 0 rgb(0 0 0 / 0.3), 0 16px 40px -12px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
 }
 
-.animate-dash {
-  animation: dash 3s linear infinite;
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-text: var(--accent-text);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  --font-display: var(--font-bricolage), "Arial Narrow", system-ui, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
+  --font-sans: var(--font-hanken), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Modular scale, ratio ~1.25, with an oversized display step */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.375rem;
+  --text-4xl: 3rem;
+  --text-5xl: 3.75rem;
+  --text-6xl: 4.75rem;
+  --text-7xl: 6rem;
+
+  --shadow-card: var(--shadow);
+  --container-content: 80rem; /* 1280px */
+  --container-prose: 40rem; /* ~65ch at body size */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+  @media (min-width: 768px) {
+    body {
+      font-size: 1.125rem;
+    }
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h3 {
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-weight: 600;
+  }
+  /* Serif italic accent words inside headings: <em> */
+  h1 em,
+  h2 em,
+  h3 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
 }
 
-body {
-  background-color: var(--color-background);
-  color: var(--color-on-surface);
-  font-family: var(--font-jetbrains-mono);
-  overflow-x: hidden;
+@layer components {
+  /* Small label above headings: a short accent rule, then sentence-case text. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--ink-2);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.25rem;
+    height: 2px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* Buttons: squared, solid ink; accent wipes up on hover; arrow nudges. */
+  .btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 650;
+    line-height: 1.2;
+    text-decoration: none;
+    transition:
+      color 0.35s var(--ease-out-expo),
+      border-color 0.35s var(--ease-out-expo),
+      transform 0.2s ease;
+  }
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--accent);
+    transform: translateY(101%);
+    transition: transform 0.45s var(--ease-out-expo);
+  }
+  .btn:hover::before,
+  .btn:focus-visible::before {
+    transform: translateY(0);
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+  .btn svg {
+    transition: transform 0.35s var(--ease-out-expo);
+  }
+  .btn:hover svg:last-child {
+    transform: translateX(3px);
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn-primary:hover,
+  .btn-primary:focus-visible {
+    color: var(--accent-ink);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn-secondary:hover,
+  .btn-secondary:focus-visible {
+    color: var(--accent-ink);
+    border-color: var(--accent);
+  }
+  .btn-ghost {
+    min-height: 2.75rem;
+    padding: 0.5rem 0.25rem;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+  }
+  .btn-ghost::before {
+    display: none;
+  }
+  .btn-ghost:hover {
+    text-decoration-color: var(--accent);
+  }
+
+  /* Underline that draws in on hover, for text links. */
+  .link-draw {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat;
+    transition: background-size 0.4s var(--ease-out-expo);
+    text-decoration: none;
+  }
+  .link-draw:hover,
+  .link-draw:focus-visible {
+    background-size: 100% 1.5px;
+  }
+
+  /* Long-form text (articles, case-study body, legal pages). */
+  .prose {
+    max-width: var(--container-prose);
+    color: var(--ink-2);
+  }
+  .prose > * + * {
+    margin-top: 1.1em;
+  }
+  .prose h2 {
+    font-size: var(--text-2xl);
+    margin-top: 2em;
+  }
+  .prose h3 {
+    font-size: var(--text-xl);
+    margin-top: 1.6em;
+  }
+  .prose a {
+    color: var(--accent-text);
+    text-decoration: underline;
+  }
+  .prose ul,
+  .prose ol {
+    padding-left: 1.25em;
+  }
+  .prose ul {
+    list-style: disc;
+  }
+  .prose ol {
+    list-style: decimal;
+  }
+  .prose li + li {
+    margin-top: 0.4em;
+  }
+  .prose strong {
+    color: var(--ink);
+    font-weight: 650;
+  }
+  .prose code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--surface-2);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+  }
+  .prose pre {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  .prose pre code {
+    background: none;
+    padding: 0;
+  }
+  .prose blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--text-xl);
+  }
+  .prose table {
+    width: 100%;
+    font-size: var(--text-sm);
+    border-collapse: collapse;
+  }
+  .prose th,
+  .prose td {
+    border-bottom: 1px solid var(--line);
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    text-align: left;
+  }
 }
 
-/* Scrollbar customization */
-::-webkit-scrollbar {
-  width: 8px;
+/* ------------------------------------------------------------------
+   Motion. Everything here is CSS-only so it starts at first paint
+   without waiting for JavaScript. Scroll-driven motion lives in GSAP
+   (src/components/motion). All of it is off for reduced motion.
+   ------------------------------------------------------------------ */
+
+/* Hero words rise out of a mask, staggered by --i. */
+.rise {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
 }
-::-webkit-scrollbar-track {
-  background: var(--color-background);
+.rise > span {
+  display: inline-block;
 }
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-tertiary);
+@media (prefers-reduced-motion: no-preference) {
+  .rise > span {
+    animation: rise 0.9s var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 45ms + 60ms);
+  }
+  @keyframes rise {
+    from {
+      transform: translateY(105%);
+    }
+  }
+  .fade-in {
+    animation: fade-up 0.8s var(--ease-out-expo) both;
+    animation-delay: var(--d, 0ms);
+  }
+  @keyframes fade-up {
+    from {
+      transform: translateY(14px);
+      opacity: 0.001;
+    }
+  }
 }
 
-/* Glassmorphism details */
-.glass-stroke {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.liquid-glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-}
-
-.neon-glow {
-  text-shadow: 0 0 10px rgba(111, 255, 0, 0.5), 0 0 20px rgba(111, 255, 0, 0.2);
-}
-
-.glow-purple {
-  box-shadow: 0 0 40px rgba(188, 197, 237, 0.08);
-}
-
-.neon-underline {
+/* Infinite marquee. Two copies of the track; the second is aria-hidden. */
+.marquee {
   position: relative;
+  display: flex;
+  overflow: hidden;
 }
-.neon-underline::after {
-  content: '';
+/* Edge fades as overlays (a mask would force a full repaint every frame). */
+.marquee::before,
+.marquee::after {
+  content: "";
   position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 60px;
-  height: 4px;
-  background-color: var(--color-tertiary);
-  border-radius: 2px;
-}
-
-.texture-overlay {
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 6%;
   pointer-events: none;
-  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
-  opacity: 0.25;
-  mix-blend-mode: lighten;
+}
+.marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg), transparent);
+}
+.marquee::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--bg), transparent);
+}
+.marquee-track {
+  will-change: transform;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: marquee var(--marquee-speed, 40s) linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-100%);
+    }
+  }
 }
 
-.grid-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-/* Utility to override grayscale */
-.img-grayscale-hover {
-  filter: grayscale(1);
-  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+/* Theme toggle icon: show the sun in dark mode, the moon in light mode. */
+.theme-icon-sun {
+  display: none;
 }
-.img-grayscale-hover:hover {
-  filter: grayscale(0);
+:root[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+:root[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-icon-sun {
+    display: block;
+  }
+  :root:not([data-theme="light"]) .theme-icon-moon {
+    display: none;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+}
+
+/* Mobile menu links slide up in sequence. */
+@media (prefers-reduced-motion: no-preference) {
+  .rise-in {
+    animation: rise 0.7s var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 50ms + 80ms);
+  }
+}
+
+/* Paper grain over the whole page: a tiny tiled SVG noise, very faint. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+:root[data-theme="dark"] body::after {
+  opacity: 0.07;
+}
+
+/* Hand-drawn underline draws in after the headline lands. */
+.scribble path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .scribble path {
+    animation: draw 1.1s var(--ease-out-expo) 0.9s both;
+  }
+  @keyframes draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+  }
+  .spin-slow {
+    animation: spin 18s linear infinite;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* SVG lines that draw themselves in (set pathLength={1} on the path). */
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .draw {
+    animation: draw 1.8s var(--ease-out-expo) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 200ms);
+  }
+}
+
+/* Theme switch: ThemeToggle animates a circular clip on the new snapshot. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  z-index: 1;
 }

@@ -1,84 +1,113 @@
-"use client";
+import Image from "next/image";
+import { site } from "@/content/site";
+import { Container } from "./Container";
+import { PathSplit } from "./PathSplit";
+import { Contours, RotatingBadge, Scribble } from "./graphics";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { portfolioData } from "@/data/portfolioData";
+/*
+ * Home hero. Headline alternatives in the same plain tone (pick one later if wanted):
+ *   1. "I'm Rishi Yadav. I design and build websites that bring in enquiries, and web apps that save your team time."
+ *   2. "I'm Rishi Yadav. Clear, fast websites and dependable web apps for businesses that are ready to grow."
+ */
 
-export default function Hero() {
+type Segment = { words: string[]; em?: boolean; muted?: boolean };
+
+const headline: Segment[] = [
+  { words: ["I’m", "Rishi", "Yadav."], muted: true },
+  { words: ["I", "build"] },
+  { words: ["fast,", "reliable"], em: true },
+  { words: ["websites", "and", "web", "apps", "for", "growing", "businesses."] },
+];
+
+/** Each word sits in a mask and rises in on load (CSS only, so it paints without waiting for JS). */
+function RisingHeadline() {
+  let i = 0;
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background"
-    >
-      {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-0 filter brightness-[0.35] contrast-[1.15]"
-      >
-        <source
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260331_045634_e1c98c76-1265-4f5c-882a-4276f2080894.mp4"
-          type="video/mp4"
-        />
-      </video>
+    <>
+      {headline.map((seg, s) => {
+        const words = seg.words.map((w, k) => (
+          <span key={k}>
+            <span className="rise">
+              <span style={{ "--i": i++ } as React.CSSProperties}>{w}</span>
+            </span>{" "}
+          </span>
+        ));
+        if (seg.em)
+          return [
+            <em key={s} className="relative inline-block whitespace-nowrap text-accent-text">
+              {words}
+              <Scribble className="absolute -bottom-[0.08em] left-0 h-[0.22em] w-[92%] text-accent" />
+            </em>,
+            " ",
+          ];
+        if (seg.muted) return <span key={s} className="text-muted">{words}</span>;
+        return <span key={s}>{words}</span>;
+      })}
+    </>
+  );
+}
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 grid-pattern opacity-20 pointer-events-none z-0"></div>
-
-      {/* Main Hero Container */}
-      <div className="relative z-10 text-center px-4 max-w-container-max mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="relative inline-block"
-        >
-          <h1 className="font-anton text-6xl sm:text-7xl md:text-8xl lg:text-[110px] leading-[0.85] tracking-tighter uppercase text-on-surface">
-            BUILDING FAST,
-            <br />
-            SCALABLE
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-fixed-dim to-tertiary neon-glow">
-              ( DIGITAL )
-            </span>
-            <br />
-            PRODUCTS
-          </h1>
-
-          {/* Accent Handwriting Overlay */}
-          <motion.div
-            initial={{ opacity: 0, rotate: 0, scale: 0.8 }}
-            animate={{ opacity: 1, rotate: 12, scale: 1 }}
-            transition={{ delay: 0.8, duration: 0.6, type: "spring" }}
-            className="absolute -right-6 -top-6 md:-right-16 md:-top-8 origin-bottom-left"
-          >
-            <span className="font-condiment text-4xl md:text-6xl text-tertiary neon-glow select-none">
-              Full-Stack Dev
-            </span>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Hero Bottom Stats */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-8 sm:gap-16 md:gap-32 w-full justify-center text-center px-6"
-      >
-        {portfolioData.stats.map((stat, idx) => (
-          <div key={idx} className="flex flex-col items-center">
-            <span className="font-jetbrains-mono text-[10px] sm:text-xs font-bold uppercase tracking-widest text-on-surface-variant">
-              {stat.label}
-            </span>
-            <span className="font-jetbrains-mono text-xs sm:text-sm text-on-surface mt-1">
-              {stat.value}
-            </span>
+export function Hero() {
+  return (
+    <section aria-labelledby="hero-title" className="relative overflow-hidden">
+      <Contours
+        seed={11}
+        rings={11}
+        className="pointer-events-none absolute -top-40 -right-56 size-[46rem] text-line-strong opacity-45 md:-top-24 md:-right-40 md:size-[60rem]"
+      />
+      <Container className="relative pt-10 pb-14 sm:pt-14 md:pt-8 md:pb-14 xl:pt-10">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-12">
+          <div className="lg:col-span-8">
+            <p className="eyebrow fade-in">
+              {site.role} · {site.location.locality}, {site.location.region}
+            </p>
+            <h1
+              id="hero-title"
+              className="mt-6 text-[2.6rem] leading-[0.98] sm:text-6xl md:mt-6 md:text-[4.25rem] xl:text-[4.6rem]"
+            >
+              <RisingHeadline />
+            </h1>
+            <p
+              className="fade-in mt-7 max-w-xl text-lg text-ink-2 md:mt-6"
+              style={{ "--d": "650ms" } as React.CSSProperties}
+            >
+              Full-stack developer and web consultant based in Narnaul, Haryana, working with clinics, institutes,
+              retailers and companies across Delhi NCR and India.
+            </p>
+            {site.availability && (
+              <p className="mt-5 inline-flex items-center gap-2 text-sm text-ink-2">
+                <span aria-hidden="true" className="size-2 rounded-full bg-success" />
+                {site.availability}
+              </p>
+            )}
           </div>
-        ))}
-      </motion.div>
+
+          <figure
+            className="fade-in relative hidden lg:col-span-4 lg:block"
+            style={{ "--d": "300ms" } as React.CSSProperties}
+          >
+            <div className="relative aspect-square overflow-hidden rounded-lg bg-surface-2">
+              <Image
+                data-parallax="0.12"
+                src={site.photo.src}
+                alt={site.photo.alt}
+                width={site.photo.width}
+                height={site.photo.height}
+                priority
+                sizes="(min-width: 1280px) 400px, 32vw"
+                className="h-[112%] w-full object-cover object-top"
+              />
+            </div>
+            <RotatingBadge className="absolute -top-8 -left-10 z-10 size-28 xl:size-32" />
+            <figcaption className="mt-3 flex items-center justify-between text-sm text-muted">
+              <span>Rishi Yadav</span>
+              <span>Narnaul, India</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <PathSplit className="fade-in mt-12 md:mt-8" />
+      </Container>
     </section>
   );
 }

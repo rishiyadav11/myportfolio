@@ -1,0 +1,127 @@
+A lot of small business websites in India are built on WordPress with Elementor. I understand why. It is quick to set up, a designer can drag things around without a developer, and there are thousands of ready-made templates.
+
+The trouble shows up later. The site starts to feel slow on phones. PageSpeed Insights shows a red mobile score. The owner asks why, and the answer is usually "it's Elementor" without any explanation of what that actually means.
+
+This post explains what makes most Elementor sites slow, how to measure it properly, and which fixes make a real difference. Some sites can be made fast with a clean-up. Some can't, and it helps to know which kind you have.
+
+## Elementor is not the only problem
+
+To be fair to Elementor, a careful build with it can be reasonably quick. The slow sites I see are slow because of a combination of things that tend to come together:
+
+- A heavy theme on top of a page builder.
+- Ten or more add-on plugins for sliders, popups, forms and icons.
+- Images uploaded straight from a phone or a designer's export.
+- Cheap shared hosting.
+- No caching, or three caching plugins fighting each other.
+
+Elementor makes all of this easy to add and hard to notice. So it gets the blame. Let's go through each part.
+
+## What actually slows it down
+
+### Too much HTML
+
+Every section, column and widget in Elementor wraps its content in several layers of `div` elements. A simple heading with a button can produce many nested elements in the final HTML. Multiply that across a long homepage and the browser has a large page structure (the DOM) to build and lay out.
+
+A large DOM slows the first render and makes every scroll and tap a little heavier. Newer Elementor versions have reduced this with "flexbox containers", but many sites still use the old section and column layout.
+
+### CSS and JavaScript loaded everywhere
+
+Elementor, its add-ons and the theme each load their own stylesheets and scripts. Many of them load on every page, whether that page uses the feature or not. The contact page loads the slider script. The blog post loads the popup library. The homepage loads three icon fonts.
+
+This is the biggest single cause of poor Interaction to Next Paint (INP) on the sites I look at. The phone spends its time downloading and running code the page never uses.
+
+### Icon fonts and Google Fonts
+
+Font Awesome and Elementor's own icon font are often loaded in full just to show five icons. Google Fonts are often loaded in four or five weights when the design uses two. Each font file is a separate download that can delay text from appearing.
+
+### Images
+
+This is not unique to Elementor, but page-builder sites are often managed by non-developers who upload whatever file they have. A 4 MB photo used as a background image is common. Background images set in Elementor are also harder for the browser to discover early, which hurts Largest Contentful Paint (LCP).
+
+### Hosting and caching
+
+A WordPress page is built by PHP and a database on every visit unless it's cached. On a crowded shared server, that can take a second or more before the browser receives anything. That delay is called Time to First Byte (TTFB), and no front-end optimisation can hide it.
+
+## How to measure it properly
+
+Before changing anything, get a baseline. Otherwise you won't know which fix helped.
+
+1. **Run PageSpeed Insights on the mobile tab** for your homepage and one or two inner pages. Note the LCP, INP and CLS values, not just the score.
+2. **Check the "Core Web Vitals" report in Google Search Console** if your site has enough traffic. This is real data from real visitors, and it matters more than lab scores.
+3. **Open Chrome DevTools, Network tab,** reload the page and sort by size. Write down the five largest files.
+4. **Check the "Coverage" panel in DevTools** to see how much of the loaded CSS and JavaScript is actually unused on that page.
+5. **Test TTFB** by looking at the first request in the Network tab. If it's consistently slow, the server is part of the problem.
+
+Keep these numbers somewhere. Re-test after each change.
+
+## Fixes that actually move Core Web Vitals
+
+These are roughly in order of effort, smallest first.
+
+### 1. Sort out images
+
+- Resize images to the largest size they're actually shown at.
+- Convert to WebP. Most image optimisation plugins can do this automatically.
+- Make sure images below the fold lazy load, and the main hero image does not.
+- Replace background-image heroes with a normal image where possible, so the browser finds it early.
+
+### 2. Remove plugins you don't need
+
+Go through the plugin list and ask, for each one, "what breaks if I turn this off?" Common candidates:
+
+- Add-on packs installed for a single widget.
+- Old slider plugins replaced by Elementor's own carousel.
+- Duplicate SEO, caching or security plugins.
+- Plugins for features that were removed from the site long ago.
+
+Test on a staging copy first. This step alone often makes a visible difference.
+
+### 3. Turn on Elementor's own performance settings
+
+In recent versions, Elementor has settings under Performance and Features for things like improved asset loading, optimised DOM output, lazy loading of background images and loading only the CSS each page needs. Many older sites never had these switched on because they were added after the site was built. Turn them on one at a time and check the site still looks right.
+
+### 4. Trim fonts and icons
+
+- Use one or two font families, in only the weights you need.
+- Host fonts locally instead of loading them from Google.
+- Disable Font Awesome and Elementor icons if you only use a handful, and use inline SVG icons instead.
+
+### 5. Add proper caching and a CDN
+
+Use one well-configured caching plugin, not several. If your host offers server-level caching, use that. A CDN such as Cloudflare in front of the site helps visitors far from your server and takes load off it.
+
+### 6. Move to better hosting
+
+If TTFB stays slow after caching, the hosting is the bottleneck. A good managed WordPress host or a small VPS usually costs a few hundred rupees more per month than basic shared hosting, and the difference can be dramatic.
+
+### 7. Defer third-party scripts
+
+Chat widgets, Facebook pixels and multiple analytics tags all compete with your page for the phone's attention. Load them after the page is interactive, or remove the ones nobody looks at.
+
+## When to stop fixing and rebuild
+
+Sometimes the clean-up gets a site from red to orange and then stalls. The DOM is still huge, the theme loads half a megabyte of CSS, and every change risks breaking a layout.
+
+At that point a rebuild is often cheaper than more patching. The rebuild can still be WordPress, using a lightweight theme and the block editor, or it can be a framework like Next.js if the site doesn't need frequent non-technical editing. I usually recommend a rebuild when:
+
+- The site is three or more years old and has had several people editing it.
+- Mobile LCP stays above four seconds after images, caching and plugins are sorted.
+- The business wants a redesign anyway.
+- Nobody is sure what half the plugins do.
+
+I've written about what this kind of work typically costs in [website cost in India in 2026](/writing/website-cost-in-india).
+
+## A short checklist
+
+- Mobile PageSpeed and Search Console Core Web Vitals checked and noted.
+- Images resized, converted to WebP and lazy loaded below the fold.
+- Unused plugins removed after testing on staging.
+- Elementor performance features switched on.
+- Fonts limited to what the design uses, hosted locally.
+- One caching plugin, plus a CDN.
+- Hosting TTFB checked.
+- Third-party scripts deferred or removed.
+
+## Need a hand?
+
+If your Elementor site is slow and you're not sure whether to fix it or rebuild it, I can help you decide. A [website audit](/website-audit) gives you a written list of what's slowing the site down and what each fix is worth. If you already know you want a faster site, see [how I work](/work-with-me) or look at [sites I've built](/work).

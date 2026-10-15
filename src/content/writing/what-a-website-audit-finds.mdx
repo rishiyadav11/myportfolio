@@ -1,0 +1,150 @@
+{/* TODO: Rishi to replace with real anonymised findings and numbers from the actual audit */}
+
+A while ago I was asked to audit the website of an investment firm. The site looked fine. It had a clean homepage, a team page, a list of products and a contact form. Nobody inside the firm thought anything was wrong with it.
+
+That is normal. Most websites look fine from the front. The problems sit underneath: in how pages load, how search engines read them, and what the site tells a regulator or a careful client.
+
+This post walks through the kind of issues I look for in an audit like that, and the ones I find again and again. I have kept it general on purpose. The client stays anonymous, and the patterns apply to almost any business site, not just financial firms.
+
+## Why a financial firm's website deserves more care
+
+For a clinic or a coaching institute, a slow website loses enquiries. For an investment firm, it also loses trust. People are deciding whether to hand over their savings. They notice a broken link, an outdated disclosure, a padlock warning or a contact form that never replies.
+
+Financial firms in India also have more to get right on paper. Registration details, disclaimers, grievance contacts and risk statements need to be on the site, current and easy to find. An audit is a cheap way to check all of that before someone else does.
+
+## How I run the audit
+
+I keep the process simple and repeatable:
+
+1. **Crawl the whole site** to list every page, image, script and link, and catch anything broken or redirected badly.
+2. **Test speed on a real mid-range Android phone profile**, not just a fast laptop, using Lighthouse and the Core Web Vitals field data in Google Search Console when it exists.
+3. **Read the HTML of key pages** the way Google does: titles, descriptions, headings, structured data, canonical tags.
+4. **Check the server's response headers** for security basics.
+5. **Use the site like a visitor**: fill every form, tap every button on a phone, try the site with a keyboard only.
+6. **Compare with two or three competitors** so the findings have context.
+
+Then I write it up as a short report, ranked by what matters most, with a rough effort estimate for each fix.
+
+## What I commonly find
+
+### 1. Speed problems that start with images
+
+The single most common issue is oversized images. A homepage banner exported straight from a designer's file can be several megabytes. On a phone over mobile data, that one image decides how quickly the page feels ready.
+
+Typical findings in this area:
+
+- Hero images served at full camera resolution instead of the size they are shown at.
+- JPEG and PNG files where WebP or AVIF would be a fraction of the size.
+- Every image loading at once, including ones far down the page, instead of lazy loading.
+- Logos of partner firms or regulators uploaded as large PNGs when a small SVG would do.
+
+These are usually the cheapest fixes in the whole report, and they often make the biggest visible difference.
+
+### 2. Too much JavaScript for a brochure site
+
+An investment firm's website is mostly text. It does not need much JavaScript. Yet I often find chat widgets, sliders, animation libraries, two analytics tools, a tag manager and a page builder's full script bundle all loading on every page.
+
+Each one adds a little. Together they delay the moment a visitor can scroll or tap. In Core Web Vitals terms, this shows up as poor Interaction to Next Paint (INP) and a slow Largest Contentful Paint (LCP).
+
+The fix is rarely clever. It is usually removal: drop the slider nobody uses, load the chat widget only after interaction, keep one analytics tool.
+
+### 3. SEO basics that were never set
+
+This is the area where small mistakes cost the most over time. Common findings:
+
+- **Duplicate or missing page titles.** Several pages titled just "Home" or the firm's name.
+- **No meta descriptions,** so Google picks random text from the page.
+- **More than one H1** on a page, or none at all, because the theme used headings for styling.
+- **No structured data** telling Google the business name, location and contact details.
+- **Staging or test pages indexed** in Google, sometimes with dummy content.
+- **A sitemap that lists pages which no longer exist,** or no sitemap at all.
+
+None of these are hard to fix. They just need someone to go through the site page by page.
+
+### 4. Missing security headers
+
+Most business sites now have HTTPS, which is good. But HTTPS is only the start. I check the response headers for things like:
+
+- `Strict-Transport-Security`, so browsers always use HTTPS.
+- `Content-Security-Policy`, which limits where scripts can load from.
+- `X-Frame-Options` or `frame-ancestors`, so the site can't be embedded in someone else's page.
+- `X-Content-Type-Options` and a sensible `Referrer-Policy`.
+
+On many sites, most of these are missing. Adding them is usually a few lines of server or hosting configuration. For a firm that handles investor enquiries, it is worth the hour it takes.
+
+I also look for outdated plugins or CMS versions, an admin login page at the default address with no rate limiting, and forms that send data without any spam protection.
+
+### 5. Compliance hygiene
+
+I am not a lawyer, and an audit is not legal advice. But some checks are simple and worth doing on any regulated firm's site:
+
+- Is the registration number shown clearly, and is it the current one?
+- Are the disclaimers and risk statements present on the pages where they matter, not just buried in the footer?
+- Is there a working grievance or complaints contact, as the regulator expects?
+- Is the privacy policy current, and does it mention the analytics and forms the site actually uses?
+- Do old blog posts or product pages make return claims that should not be there any more?
+
+Usually the firm's compliance team knows what should be on the site. The audit just shows them what actually is.
+
+### 6. Broken or silent features
+
+This one surprises people the most. A contact form that looks fine but sends emails to an inbox nobody checks. A "download brochure" button that returns a 404. A WhatsApp link with the wrong number. A phone number that isn't tappable on mobile.
+
+I find at least one of these on most sites I audit. They are invisible from the inside because the team never uses their own contact form.
+
+### 7. Mobile and accessibility gaps
+
+Most visitors come from phones. Common issues:
+
+- Text too small to read without zooming.
+- Buttons and links too close together to tap accurately.
+- Menus that don't open with a keyboard or a screen reader.
+- Images without alt text.
+- Low-contrast grey text on white, which is hard to read outdoors.
+## What the competitor comparison adds
+
+Findings on their own can feel abstract. Putting the firm's site next to two or three similar firms makes them concrete. If a competitor's homepage loads noticeably faster on a phone, or shows up with rich results in Google while yours shows a bare link, that is easy for a director to understand.
+
+I keep the comparison short and factual. It is there to set priorities.
+
+## Which fixes matter most
+
+After a typical audit, I group the fixes like this:
+
+**Do this week**
+
+- Fix broken forms, links and contact details.
+- Compress and resize the largest images.
+- Correct any outdated registration details or disclaimers.
+
+**Do this month**
+
+- Remove unused scripts and plugins.
+- Write proper titles and descriptions for the main pages.
+- Add security headers.
+- Remove test pages from Google's index.
+
+**Plan for later**
+
+- Rebuild heavy page-builder templates if they can't be made fast.
+- Add structured data and a clean sitemap.
+- Set up a simple maintenance routine so the site doesn't drift back.
+
+Most firms can handle the first group in-house or in a day or two of developer time. The later groups depend on how the site was built.
+
+## A quick self-check you can do today
+
+You don't need an audit to spot the worst issues. Try this on your own site:
+
+- Open your site on your phone, on mobile data, and count how long the homepage takes to feel usable.
+- Submit your own contact form and check the email actually arrives.
+- Search Google for `site:yourdomain.com` and look for pages that shouldn't be there.
+- Run your homepage through PageSpeed Insights and note the mobile score.
+- Check every page has a different title in the browser tab.
+- Confirm your registration number, address and phone number are correct everywhere.
+
+If two or more of those surprise you, a proper audit will probably pay for itself.
+
+## If you want me to look at your site
+
+I run audits like this for clinics, institutes, retailers and financial-services firms. You get a written report with ranked findings, screenshots and a clear list of what to fix first. You can see what's included on the [website audit page](/website-audit), or [send me your site's address](/contact) and I'll tell you honestly whether an audit is worth it for you.
